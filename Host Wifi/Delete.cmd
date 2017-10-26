@@ -1,1 +1,0 @@
-netsh wlan set hostednetwork mode=disallow ssid=Gamer.No1 key=eotw2012

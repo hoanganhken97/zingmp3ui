@@ -59,8 +59,8 @@ export default class Topic_Hot extends Component{
 const styles =  StyleSheet.create({
   wrapper:{
     width: imageWidth,
-    height: imageWidth + 190,
-    flex: 1
+    height: imageWidth + 195,
+    flex: 1,
   },
   titleStyle:{
     justifyContent:'center',
@@ -169,7 +169,7 @@ const styles =  StyleSheet.create({
   },
   textPlaylist:{
     fontFamily:'sans-serif-medium',
-    color:'black',
+    color:'#1a1a1a',
     fontSize: 17,
     alignItems:'center',
     alignSelf:'center',

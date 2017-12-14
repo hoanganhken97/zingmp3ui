@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
   },
   title:{
     fontSize:20,
+    fontFamily:'sans-serif-medium',
     fontWeight:'bold',
     color:'white'
   },

@@ -12,7 +12,7 @@ export default class Chart extends Component{
         <View style={{flex: 0.07}}>
           <TouchableHighlight onPress={()=>{}} style={{width: imageWidth, height: imageWidth /9,}} underlayColor='#C4BABA'>
             <View style={styles.titleStyle}>
-              <Text style={styles.title}>ZING CHART</Text>
+              <Text style={styles.title}>MFU CHART</Text>
               <Text style={styles.content}>Xem thêm</Text>
               <Image source={require('../../img/icon/play_black.png')} style={styles.icon}/>
             </View>
@@ -59,21 +59,61 @@ export default class Chart extends Component{
             </View>
             <View style={styles.wrapRealSong}>
               <View style={{flex: 1}}>
-                <View style={styles.wrapTopElement}>
+                  <View style={styles.wrapTopElement}>
                   <Text style={[styles.textTopColor, {color:'#8e44ad'}]}>01</Text>
+                  <Image style={styles.wrapImgTop} source={require('../../img/chart/avatar.jpg')} />
+                  <View style ={styles.wrapTextTop}>
+                    <Text style={styles.textTopTittle}>Sống Xa Anh Chẳng Dễ...</Text>
+                    <Text style={styles.textTopContent}>Bảo Anh</Text>
+                  </View>
+                  <Image style={styles.iconPlayVideo} source={require('../../img/icon/play_video.png')}/>
+                  <Image style={styles.iconMore} source={require('../../img/icon/more.png')}/>
                 </View>
+
                 <View style={styles.wrapTopElement}>
                   <Text style={[styles.textTopColor, {color:'#32c24d'}]}>02</Text>
+                  <Image style={styles.wrapImgTop} source={require('../../img/chart/avatar2.jpg')} />
+                  <View style ={styles.wrapTextTop}>
+                    <Text style={styles.textTopTittle}>Gương Mặt Lạ Lẫm</Text>
+                    <Text style={styles.textTopContent}>Mr.Siro</Text>
+                  </View>
+                  <Image style={styles.iconPlayVideo} source={require('../../img/icon/play_video.png')}/>
+                  <Image style={styles.iconMore} source={require('../../img/icon/more.png')}/>
                 </View>
+
                 <View style={styles.wrapTopElement}>
                   <Text style={[styles.textTopColor, {color:'#f39c12'}]}>03</Text>
+                  <Image style={styles.wrapImgTop} source={require('../../img/chart/avatar3.jpg')} />
+                  <View style ={styles.wrapTextTop}>
+                    <Text style={styles.textTopTittle}>Chạm Khẽ Tim Anh Một...</Text>
+                    <Text style={styles.textTopContent}>Noo Phước Thịnh</Text>
+                  </View>
+                  <Image style={styles.iconPlayVideo} source={require('../../img/icon/play_video.png')}/>
+                  <Image style={styles.iconMore} source={require('../../img/icon/more.png')}/>
                 </View>
+
                 <View style={styles.wrapTopElement}>
                   <Text style={styles.textTopOther}>04</Text>
+                  <Image style={styles.wrapImgTop} source={require('../../img/chart/avatar4.jpg')} />
+                  <View style ={styles.wrapTextTop}>
+                    <Text style={styles.textTopTittle}>Cho Em Gần Anh Thêm...</Text>
+                    <Text style={styles.textTopContent}>Hương Tràm</Text>
+                  </View>
+                  <Image style={styles.iconPlayVideo} source={require('../../img/icon/play_video.png')}/>
+                  <Image style={styles.iconMore} source={require('../../img/icon/more.png')}/>
                 </View>
+
                 <View style={styles.wrapTopElement}>
                   <Text style={styles.textTopOther}>05</Text>
+                  <Image style={styles.wrapImgTop} source={require('../../img/chart/avatar5.jpg')} />
+                  <View style ={styles.wrapTextTop}>
+                    <Text style={styles.textTopTittle}>Mặt Trời Của Em</Text>
+                    <Text style={styles.textTopContent}>Phương Ly, JustaTee</Text>
+                  </View>
+                  <Image style={styles.iconPlayVideo} source={require('../../img/icon/play_video.png')}/>
+                  <Image style={styles.iconMore} source={require('../../img/icon/more.png')}/>
                 </View>
+
               </View>
             </View>
           </View>
@@ -140,7 +180,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     position:'absolute',
     right:imageWidth - 100,
-    borderRadius: 5
+    borderRadius: 5,
+    borderColor:'#8e44ad',
+    borderWidth: 3
   },
   mrsiro:{
     width: 50,
@@ -250,24 +292,22 @@ const styles = StyleSheet.create({
     backgroundColor:'#ededed'
   },
   imgTime:{
-    width: 33,
-    height: 33,
+    width: 22,
+    height: 22,
     marginLeft: 7,
   },
   textTime:{
     alignSelf:'center',
     fontFamily:'sans-serif-medium',
-    color:'black',
+    color:'#1a1a1a',
     fontSize: 15,
     marginLeft: 7
   },
   wrapRealSong:{
     flex: 0.9,
-    borderWidth: 1,
   },
   wrapTopElement:{
     flex: 0.2,
-    borderWidth: 1,
     flexDirection:'row',
   },
   textTopColor:{
@@ -283,4 +323,39 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontSize: 15,
   },
+  wrapImgTop:{
+    width: imageWidth / 6.7,
+    height: imageWidth / 6.7,
+    alignSelf:'center',
+    marginLeft: 15,
+    borderRadius: 5
+  },
+  wrapTextTop:{
+    width: imageWidth /2.3,
+    height: imageWidth / 6.7,
+    alignSelf:'center',
+    marginLeft: 7,
+    justifyContent:'center',
+  },
+  textTopTittle:{
+    fontFamily:'sans-serif-medium',
+    color:'#2d2d2d',
+    fontSize: 15
+  },
+  textTopContent:{
+    fontFamily:'sans-serif-medium',
+    fontSize: 15,
+  },
+  iconPlayVideo:{
+    width:imageWidth / 11,
+    height: imageWidth / 11,
+    alignSelf:'center',
+    marginLeft: 20
+  },
+  iconMore:{
+    width: imageWidth / 7,
+    height: imageWidth / 7,
+    alignSelf:'center',
+    marginLeft: 5
+  }
 });

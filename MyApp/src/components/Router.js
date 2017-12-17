@@ -9,27 +9,31 @@ import Menu from './Main/Menu';
 
 export const HomeStack = StackNavigator({
   Screen_Main: {
-    screen: Shop,
+    screen: Main,
     navigationOptions: {
-      title: 'Screen Shop'
+      title: 'Screen Main',
+      header: null
     }
   },
   Screen_Authentication: {
     screen: Authentication,
     navigationOptions: {
-      title: 'Screen Authentication'
+      title: 'Screen Authentication',
+      header: null
     }
   },
   Screen_ChangeInfo: {
     screen: ChangeInfo,
     navigationOptions: {
-      title: 'Screen ChangeInfo'
+      title: 'Screen ChangeInfo',
+      header: null
     }
   },
   Screen_OrderHistory: {
     screen: OrderHistory,
     navigationOptions: {
-      title: 'Screen Orderhistory'
+      title: 'Screen Orderhistory',
+      header: null
     }
   },
 });

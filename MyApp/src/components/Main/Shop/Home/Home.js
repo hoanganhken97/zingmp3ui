@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Collection from './Collection';
+import Category from './Category';
 
 export default class Home extends Component {
   render() {
     return (
         <View style={styles.wrapAll}>
           <Collection />
+          <Category />
         </View>
     );
   }

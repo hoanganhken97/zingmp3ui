@@ -11,7 +11,7 @@ export default class Collection extends Component {
           <View style={{ flex: 1, justifyContent: 'center' }}>
             <Text style={styles.title}>WINTER COLLECTION</Text>
           </View>
-          <View style={{ flex: 4, alignItems: 'center' }}>
+          <View style={{ flex: 4, alignItems: 'flex-end' }} >
             <Image source={imgBanner} style={styles.imgStyle} />
           </View>
 
@@ -23,17 +23,19 @@ export default class Collection extends Component {
 const styles = StyleSheet.create({
   wrapCollection: {
     backgroundColor: '#FFF',
-    height: height / 2.8,
+    height: height / 2.9,
     margin: 10,
     padding: 10,
     paddingTop: 0
   },
   imgStyle: {
     width: width - 40,
-    height: ((width - 40) / 933) * 465,
+    height: (width - 40) / 2,
+    flex: 1
   },
   title: {
     fontSize: 20,
     color: '#606467',
+    fontFamily: 'sans-serif-medium'
   }
 });

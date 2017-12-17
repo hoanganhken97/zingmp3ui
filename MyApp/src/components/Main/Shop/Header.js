@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     fontSize: 14,
     borderRadius: 10,
-    paddingLeft: 10
+    paddingLeft: 10,
   },
   title: {
     color: 'white',

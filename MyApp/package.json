@@ -9,7 +9,9 @@
 	"dependencies": {
 		"react": "16.0.0",
 		"react-native": "0.50.4",
+		"react-native-drawer": "^2.5.0",
 		"react-native-swiper": "^1.5.13",
+		"react-native-tab-navigator": "^0.3.4",
 		"react-navigation": "^1.0.0-beta.21"
 	},
 	"devDependencies": {

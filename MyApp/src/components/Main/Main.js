@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
 import Drawer from 'react-native-drawer';
 import Shop from './Shop/Shop';
 import Menu from './Menu';
-import Home from './Shop/Home/Home';
 
 export default class Main extends Component {
   gotoAuthentication() {

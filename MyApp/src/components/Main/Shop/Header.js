@@ -37,13 +37,14 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   textInput: {
     height: width / 11,
     backgroundColor: 'white',
-    fontFamily: 'sans-serif-medium',
-    fontSize: 14
+    fontSize: 14,
+    borderRadius: 10,
+    paddingLeft: 10
   },
   title: {
     color: 'white',
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   icon: {
-    width: 33,
-    height: 33
+    width: 27,
+    height: 27
   }
 });

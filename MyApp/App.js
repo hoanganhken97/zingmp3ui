@@ -6,11 +6,12 @@
 
 import React, { Component } from 'react';
 import { HomeStack } from './src/components/Router';
+import Authentication from './src/components/Authentication/Authentication';
 
 export default class App extends Component {
   render() {
     return (
-      <HomeStack />
+      <Authentication />
     );
   }
 }

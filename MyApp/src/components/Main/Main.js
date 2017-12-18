@@ -32,7 +32,8 @@ export default class Main extends Component {
         content={<Menu
           openAuthentication={this.gotoAuthentication.bind(this)}
           openChangeInfo={this.gotoChaneInfo.bind(this)}
-          openOrderHistory={this.gotoOrderHistory.bind(this)}
+          openOrderHistory={this.gotoOrderHistory.bind(this)
+          }
         />}
       >
         <Shop open={this.openControlPanel.bind(this)} />

@@ -12,7 +12,7 @@ export default class Menu extends Component {
     render() {
         const logoutJSX = (
             <View>
-                <TouchableOpacity style={styles.btnLoginStyle}>
+                <TouchableOpacity style={styles.btnLoginStyle} onPress={this.props.openAuthentication}>
                     <Text style={styles.btnText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
@@ -21,13 +21,13 @@ export default class Menu extends Component {
             <View style={{ flex: 1, justifyContent: 'space-between' }}>
                 <Text style={styles.profileName}>Văn Minh Nguyên</Text>
                 <View>
-                    <TouchableOpacity style={styles.btnElement}>
+                    <TouchableOpacity style={styles.btnElement} onPress={this.props.openOrderHistory} >
                         <Text style={styles.btnTextElement}>Order History</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnElement}>
+                    <TouchableOpacity style={styles.btnElement} onPress={this.props.openChangeInfo} >
                         <Text style={styles.btnTextElement}>Change Info</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnElement}>
+                    <TouchableOpacity style={styles.btnElement} >
                         <Text style={styles.btnTextElement}>Sign Out</Text>
                     </TouchableOpacity>
                 </View>
@@ -43,17 +43,6 @@ export default class Menu extends Component {
         );
     }
 }
-
-/*<Text>Menu Component</Text>
-<TouchableOpacity onPress={ this.props.openAuthentication }>
-  <Text>Go to Authentication</Text>
-</TouchableOpacity>
-<TouchableOpacity onPress={ this.props.openChangeInfo}>
-  <Text>Go to ChangeInfo</Text>
-</TouchableOpacity>
-<TouchableOpacity onPress={ this.props.openOrderHistory}>
-  <Text>Go to Orderhistory</Text>
-</TouchableOpacity>*/
 
 const styles = StyleSheet.create({
     wrapMenu: {
@@ -81,6 +70,7 @@ const styles = StyleSheet.create({
     btnText: {
         color: '#4267B2',
         fontSize: 20,
+        fontFamily: 'sans-serif-medium'
     },
     btnElement: {
         height: 50,
@@ -93,7 +83,8 @@ const styles = StyleSheet.create({
     btnTextElement: {
         color: '#4267B2',
         fontSize: 17,
-        marginLeft: 10
+        marginLeft: 10,
+        fontFamily: 'sans-serif-medium',
     },
     profileName: {
         color: '#FFF',

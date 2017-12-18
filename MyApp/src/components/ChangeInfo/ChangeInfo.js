@@ -10,7 +10,7 @@ export default class ChangeInfo extends Component {
           style={{ backgroundColor: 'white', width: 50, height: 50 }}
           onPress={() => { this.props.navigation.navigate('Screen_Authentication'); }}
         >
-          <Text>Change To Authentication</Text>
+          <Text>Change Info</Text>
         </TouchableOpacity>
       </View>
     );

@@ -22,11 +22,12 @@ export default class Main extends Component {
   openControlPanel = () => {
     this.drawer.open();
   };
+
   render() {
     return (
       <Drawer
         tapToClose
-        openDrawerOffset={0.5}
+        openDrawerOffset={0.4}
         ref={(ref) => { this.drawer = ref; }}
         content={<Menu
           openAuthentication={this.gotoAuthentication.bind(this)}

@@ -23,13 +23,13 @@ export default class Shop extends Component {
       this.state = { selectedTab: 'home' };
   }
   openMenu() {
-    const { open } = this.props;
-    open();
+    const { navigation } = this.props;
+    navigation.navigate('DrawerOpen');
   }
   render() {
     return (
           <View style={{ flex: 1 }} >
-            <Header onOpen={this.openMenu.bind(this)}/>
+            <Header onOpen={this.openMenu.bind(this)} />
             <TabNavigator>
               <TabNavigator.Item
                 selected={this.state.selectedTab === 'home'}

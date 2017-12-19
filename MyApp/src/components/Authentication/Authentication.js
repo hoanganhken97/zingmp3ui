@@ -11,7 +11,7 @@ const { width } = Dimensions.get('window');
 export default class Authentication extends Component {
     constructor(props) {
         super(props);
-        this.state = {isSignIn: true}
+        this.state = { isSignIn: true };
     }
     signIn() {
         this.setState({ isSignIn: true });
@@ -46,7 +46,7 @@ export default class Authentication extends Component {
     return (
         <View style={styles.wrapAuthen}>
             <View style={styles.header}>
-                <TouchableOpacity onPress={this.props.navigation.goBack()}>
+                <TouchableOpacity onPress={() => { this.props.navigation.navigate('Screen_Main'); }}>
                     <Image source={icBack} style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.title}>Disney Shop</Text>

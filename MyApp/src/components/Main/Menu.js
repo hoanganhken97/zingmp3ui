@@ -12,7 +12,7 @@ export default class Menu extends Component {
     render() {
         const logoutJSX = (
             <View>
-                <TouchableOpacity style={styles.btnLoginStyle} onPress={this.props.openAuthentication}>
+                <TouchableOpacity style={styles.btnLoginStyle} onPress={() => this.props.navigation.navigate('Screen_Authentication')}>
                     <Text style={styles.btnText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
@@ -21,10 +21,10 @@ export default class Menu extends Component {
             <View style={{ flex: 1, justifyContent: 'space-between' }}>
                 <Text style={styles.profileName}>Văn Minh Nguyên</Text>
                 <View>
-                    <TouchableOpacity style={styles.btnElement} onPress={this.props.openOrderHistory} >
+                    <TouchableOpacity style={styles.btnElement} onPress={() => this.props.navigation.navigate('Screen_OrderHistory')} >
                         <Text style={styles.btnTextElement}>Order History</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnElement} onPress={this.props.openChangeInfo} >
+                    <TouchableOpacity style={styles.btnElement} onPress={() => this.props.navigation.navigate('Screen_ChangeInfo')} >
                         <Text style={styles.btnTextElement}>Change Info</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.btnElement} >
@@ -38,7 +38,7 @@ export default class Menu extends Component {
         return (
             <View style={styles.wrapMenu}>
                 <Image source={imgAvatar} style={styles.avatarStyle} />
-                { mainJSX }
+                {mainJSX}
             </View>
         );
     }
@@ -48,8 +48,6 @@ const styles = StyleSheet.create({
     wrapMenu: {
         flex: 1,
         backgroundColor: '#4267B2',
-        borderRightWidth: 3,
-        borderColor: '#FFF'
     },
     avatarStyle: {
         width: 150,

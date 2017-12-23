@@ -39,7 +39,6 @@ export default class Shop extends Component {
                 onPress={() => this.setState({ selectedTab: 'home' })}
                 renderIcon={() => <Image source={homeIcon} style={styles.iconTab} />}
                 renderSelectedIcon={() => <Image source={homeIconSelect} style={styles.iconTab} />}
-                badgeText="1"
                 selectedTitleStyle={{ fontFamily: 'sans-serif-medium' }}
               >
                 <Home navigation={this.props.navigation} />

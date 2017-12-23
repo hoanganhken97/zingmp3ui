@@ -8,7 +8,7 @@ export default class ProductDetail extends Component {
                 <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                     <Text>Back to Main</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Screen_ProductDetail')}>
+                <TouchableOpacity onPress={() => { this.props.navigation.navigate('Screen_ProductDetail'); }}>
                     <Text>Go to Detail</Text>
                 </TouchableOpacity>
             </View>

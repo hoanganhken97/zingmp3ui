@@ -52,6 +52,7 @@ export default class Shop extends Component {
                 renderIcon={() => <Image source={cartIcon} style={styles.iconTab} />}
                 renderSelectedIcon={() => <Image source={cartIconSelect} style={styles.iconTab} />}
                 selectedTitleStyle={{ fontFamily: 'sans-serif-medium' }}
+                badgeText="1"
               >
                 <Cart navigation={this.props.navigation} />
               </TabNavigator.Item>

@@ -35,7 +35,7 @@ export default class Main extends Component {
                 openOrderHistory={this.gotoOrderHistory.bind(this)}
                 />}
             >
-                <Shop open={this.openControlPanel.bind(this)} />
+                <Shop open={this.openControlPanel.bind(this)} navigation = {this.props.navigation}/>
             </Drawer>
     );
   }

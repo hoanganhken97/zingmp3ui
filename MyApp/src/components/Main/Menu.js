@@ -7,7 +7,7 @@ const { width, height } = Dimensions.get('window');
 export default class Menu extends Component {
     constructor(props) {
         super(props);
-        this.state = { isLogin: false };
+        this.state = { isLogin: true };
     }
     render() {
         const logoutJSX = (

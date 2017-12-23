@@ -5,20 +5,20 @@ import Category from './Category';
 import TopProduct from './TopProduct';
 
 export default class Home extends Component {
-  render() {
-    return (
+    render() {
+        return (
         <ScrollView style={styles.wrapAll}>
             <Collection />
-            <Category />
-            <TopProduct />
+            <Category navigation={this.props.navigation} />
+            <TopProduct navigation={this.props.navigation}/>
         </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  wrapAll: {
-    backgroundColor: '#d8dde0',
-    flex: 1,
-  }
+    wrapAll: {
+        backgroundColor: '#d8dde0',
+        flex: 1,
+    }
 });

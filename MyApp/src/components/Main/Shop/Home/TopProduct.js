@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
+
 import imgSp1 from '../../../../img/temp/sp1.jpeg';
 import imgSp2 from '../../../../img/temp/sp2.jpeg';
 import imgSp3 from '../../../../img/temp/sp3.jpeg';
@@ -9,6 +10,10 @@ import imgSp5 from '../../../../img/temp/sp5.jpeg';
 const { width, height } = Dimensions.get('window');
 
 export default class TopProduct extends Component {
+    openProductDetail() {
+        const { navigation } = this.props;
+        navigation.navigate('Screen_ProductDetail');
+    }
     render() {
         return (
             <View style={styles.wrapAll}>
@@ -16,27 +21,27 @@ export default class TopProduct extends Component {
                     <Text style={styles.textStyle}>TOP PRODUCT</Text>
                 </View>
                 <View style={styles.wrapProduct}>
-                    <View style={styles.wrapElement}>
+                    <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)}>
                         <Image source={imgSp1} style={styles.imgStyle} />
                         <Text style={styles.textProductName}>PRODUCT NAME</Text>
                         <Text style={styles.textProductPrice}>150$</Text>
-                    </View>
-                    <View style={styles.wrapElement}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)}>
                         <Image source={imgSp2} style={styles.imgStyle} />
                         <Text style={styles.textProductName}>PRODUCT NAME</Text>
                     	<Text style={styles.textProductPrice}>250$</Text>
-                    </View>
-                    <View style={{ height: 10, width }}/>
-                    <View style={styles.wrapElement}>
+                    </TouchableOpacity>
+                    <View style={{ height: 10, width }} />
+                    <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)}>
                         <Image source={imgSp3} style={styles.imgStyle} />
                         <Text style={styles.textProductName}>PRODUCT NAME</Text>
                     	<Text style={styles.textProductPrice}>350$</Text>
-                    </View>
-                    <View style={styles.wrapElement}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)}>
                         <Image source={imgSp4} style={styles.imgStyle} />
                         <Text style={styles.textProductName}>PRODUCT NAME</Text>
                     	<Text style={styles.textProductPrice}>450$</Text>
-                    </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         );

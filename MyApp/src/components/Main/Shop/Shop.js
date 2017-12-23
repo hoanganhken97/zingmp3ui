@@ -7,6 +7,7 @@ import Contact from './Contact/Contact';
 import Search from './Search/Search';
 import Cart from './Cart/Cart';
 import Header from './Header';
+import ProductList from './ProductList/ProductList';
 
 import homeIconSelect from '../../../img/appIcon/home.png';
 import homeIcon from '../../../img/appIcon/home0.png';
@@ -26,6 +27,7 @@ export default class Shop extends Component {
     const { navigation } = this.props;
     navigation.navigate('DrawerOpen');
   }
+
   render() {
     return (
           <View style={{ flex: 1 }} >
@@ -40,7 +42,7 @@ export default class Shop extends Component {
                 badgeText="1"
                 selectedTitleStyle={{ fontFamily: 'sans-serif-medium' }}
               >
-                <Home />
+                <Home navigation={this.props.navigation} />
               </TabNavigator.Item>
 
               <TabNavigator.Item

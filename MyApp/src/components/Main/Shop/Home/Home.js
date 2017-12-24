@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import Collection from './Collection';
 import Category from './Category';
 import TopProduct from './TopProduct';
-import ProductList from '../ProductList/ProductList';
+
 export default class Home extends Component {
     render() {
         return (

@@ -21,7 +21,7 @@ export default class ProductDetail extends Component {
                 textColor, textShowDetail, productColor } = styles;
         return (
             <View style={wrapProductList} >
-                <ScrollView style={wrapperAll}>
+                <View style={wrapperAll}>
                     <View style={wrapHeader}>
                         <TouchableOpacity onPress={() => { this.props.navigation.goBack(); }}>
                             <Image source={backList} style={iconBack} />
@@ -29,82 +29,84 @@ export default class ProductDetail extends Component {
                         <Text style={titleStyle}>Party Dress</Text>
                         <View style={iconBack} />
                     </View>
-                    <View style={productContainer}>
-                        <Image style={productImg} source={imgSp1} />
-                        <View style={productInfo}>
-                            <Text style={textName}>Lace Sleeve Si</Text>
-                            <Text style={textPrice}>100$</Text>
-                            <Text style={textMaterial}>Material Silk</Text>
-                            <View style={lastRowInfo}>
-                                <Text style={textColor}>Color RoyalBlue</Text>
-                                <View style={productColor} />
-                                <TouchableOpacity>
-                                    <Text style={textShowDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                        <View style={productContainer}>
+                            <Image style={productImg} source={imgSp1} />
+                            <View style={productInfo}>
+                                <Text style={textName}>Lace Sleeve Si</Text>
+                                <Text style={textPrice}>100$</Text>
+                                <Text style={textMaterial}>Material Silk</Text>
+                                <View style={lastRowInfo}>
+                                    <Text style={textColor}>Color RoyalBlue</Text>
+                                    <View style={productColor} />
+                                    <TouchableOpacity>
+                                        <Text style={textShowDetail}>SHOW DETAILS</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                    <View style={productContainer}>
-                        <Image style={productImg} source={imgSp1} />
-                        <View style={productInfo}>
-                            <Text style={textName}>Lace Sleeve Si</Text>
-                            <Text style={textPrice}>100$</Text>
-                            <Text style={textMaterial}>Material Silk</Text>
-                            <View style={lastRowInfo}>
-                                <Text style={textColor}>Color RoyalBlue</Text>
-                                <View style={productColor} />
-                                <TouchableOpacity>
-                                    <Text style={textShowDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
+                        <View style={productContainer}>
+                            <Image style={productImg} source={imgSp1} />
+                            <View style={productInfo}>
+                                <Text style={textName}>Lace Sleeve Si</Text>
+                                <Text style={textPrice}>100$</Text>
+                                <Text style={textMaterial}>Material Silk</Text>
+                                <View style={lastRowInfo}>
+                                    <Text style={textColor}>Color RoyalBlue</Text>
+                                    <View style={productColor} />
+                                    <TouchableOpacity>
+                                        <Text style={textShowDetail}>SHOW DETAILS</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                    <View style={productContainer}>
-                        <Image style={productImg} source={imgSp1} />
-                        <View style={productInfo}>
-                            <Text style={textName}>Lace Sleeve Si</Text>
-                            <Text style={textPrice}>100$</Text>
-                            <Text style={textMaterial}>Material Silk</Text>
-                            <View style={lastRowInfo}>
-                                <Text style={textColor}>Color RoyalBlue</Text>
-                                <View style={productColor} />
-                                <TouchableOpacity>
-                                    <Text style={textShowDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
+                        <View style={productContainer}>
+                            <Image style={productImg} source={imgSp1} />
+                            <View style={productInfo}>
+                                <Text style={textName}>Lace Sleeve Si</Text>
+                                <Text style={textPrice}>100$</Text>
+                                <Text style={textMaterial}>Material Silk</Text>
+                                <View style={lastRowInfo}>
+                                    <Text style={textColor}>Color RoyalBlue</Text>
+                                    <View style={productColor} />
+                                    <TouchableOpacity>
+                                        <Text style={textShowDetail}>SHOW DETAILS</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                    <View style={productContainer}>
-                        <Image style={productImg} source={imgSp1} />
-                        <View style={productInfo}>
-                            <Text style={textName}>Lace Sleeve Si</Text>
-                            <Text style={textPrice}>100$</Text>
-                            <Text style={textMaterial}>Material Silk</Text>
-                            <View style={lastRowInfo}>
-                                <Text style={textColor}>Color RoyalBlue</Text>
-                                <View style={productColor} />
-                                <TouchableOpacity>
-                                    <Text style={textShowDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
+                        <View style={productContainer}>
+                            <Image style={productImg} source={imgSp1} />
+                            <View style={productInfo}>
+                                <Text style={textName}>Lace Sleeve Si</Text>
+                                <Text style={textPrice}>100$</Text>
+                                <Text style={textMaterial}>Material Silk</Text>
+                                <View style={lastRowInfo}>
+                                    <Text style={textColor}>Color RoyalBlue</Text>
+                                    <View style={productColor} />
+                                    <TouchableOpacity>
+                                        <Text style={textShowDetail}>SHOW DETAILS</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                    <View style={productContainer}>
-                        <Image style={productImg} source={imgSp1} />
-                        <View style={productInfo}>
-                            <Text style={textName}>Lace Sleeve Si</Text>
-                            <Text style={textPrice}>100$</Text>
-                            <Text style={textMaterial}>Material Silk</Text>
-                            <View style={lastRowInfo}>
-                                <Text style={textColor}>Color RoyalBlue</Text>
-                                <View style={productColor} />
-                                <TouchableOpacity>
-                                    <Text style={textShowDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
+                        <View style={productContainer}>
+                            <Image style={productImg} source={imgSp1} />
+                            <View style={productInfo}>
+                                <Text style={textName}>Lace Sleeve Si</Text>
+                                <Text style={textPrice}>100$</Text>
+                                <Text style={textMaterial}>Material Silk</Text>
+                                <View style={lastRowInfo}>
+                                    <Text style={textColor}>Color RoyalBlue</Text>
+                                    <View style={productColor} />
+                                    <TouchableOpacity>
+                                        <Text style={textShowDetail}>SHOW DETAILS</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                </ScrollView>
+                    </ScrollView>
+                </View>
             </View>
         );
     }

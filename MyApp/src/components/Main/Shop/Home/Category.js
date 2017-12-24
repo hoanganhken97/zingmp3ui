@@ -20,7 +20,7 @@ export default class Category extends Component {
                     <Text style={styles.title}>LIST OF CATEGORY</Text>
                 </View>
                 <View style={{ flex: 4, alignItems: 'center' }}>
-                    <Swiper width={width - 40} height={(width - 40) / 2} >
+                    <Swiper width={width - 40} height={(width - 40) / 2} autoplay autoplayTimeout={5}>
                         <TouchableOpacity onPress={this.openListProduct.bind(this)}>
                             <ImageBackground source={imgLittle} style={styles.imgStyle}>
                                 <Text style={styles.textContent}>Little Dress</Text>

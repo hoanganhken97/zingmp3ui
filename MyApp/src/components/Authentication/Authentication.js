@@ -23,8 +23,8 @@ export default class Authentication extends Component {
     render() {
     const signInJSX = (
         <View>
-            <TextInput style={styles.textInput} placeholder="Enter your email" />
-            <TextInput style={styles.textInput} placeholder="Enter your Password" />
+            <TextInput style={styles.textInput} placeholder="Enter your email" underlineColorAndroid='rgba(0,0,0,0)' />
+            <TextInput style={styles.textInput} placeholder="Enter your Password" underlineColorAndroid='rgba(0,0,0,0)' />
             <TouchableOpacity style={styles.wrapBtnLoginNow}>
                 <Text style={styles.btnBigText}>SIGN IN NOW</Text>
             </TouchableOpacity>
@@ -32,10 +32,10 @@ export default class Authentication extends Component {
     );
     const signUpJSX = (
         <View>
-            <TextInput style={styles.textInput} placeholder="Enter your name" />
-            <TextInput style={styles.textInput} placeholder="Enter your password" />
-            <TextInput style={styles.textInput} placeholder="Enter your Password" />
-            <TextInput style={styles.textInput} placeholder="Re-enter your Password" />
+            <TextInput style={styles.textInput} placeholder="Enter your name" underlineColorAndroid='rgba(0,0,0,0)' />
+            <TextInput style={styles.textInput} placeholder="Enter your password" underlineColorAndroid='rgba(0,0,0,0)' />
+            <TextInput style={styles.textInput} placeholder="Enter your Password" underlineColorAndroid='rgba(0,0,0,0)' />
+            <TextInput style={styles.textInput} placeholder="Re-enter your Password" underlineColorAndroid='rgba(0,0,0,0)' />
             <TouchableOpacity style={styles.wrapBtnLoginNow}>
                 <Text style={styles.btnBigText}>SIGN UP NOW</Text>
             </TouchableOpacity>

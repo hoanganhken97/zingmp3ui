@@ -6,11 +6,12 @@
 
 import React, { Component } from 'react';
 import { SideMenu } from './src/components/Router';
-import OrderHistory from './src/components/OrderHistory/OrderHistory';
+import ChangeInfo from './src/components/ChangeInfo/ChangeInfo';
+
 export default class App extends Component {
   render() {
     return (
-      <OrderHistory />
+      <ChangeInfo />
     );
   }
 }

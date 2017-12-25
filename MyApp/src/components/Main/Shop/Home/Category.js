@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions, ImageBackground, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-import imgLittle from '../../../../img/temp/little.jpg';
-import imgMaxi from '../../../../img/temp/maxi.jpg';
-import imgParty from '../../../../img/temp/party.jpg';
+// import imgLittle from '../../../../img/temp/little.jpg';
+// import imgMaxi from '../../../../img/temp/maxi.jpg';
+// import imgParty from '../../../../img/temp/party.jpg';
 
 const { width, height } = Dimensions.get('window');
+const url = 'http://10.0.136.37:8080/api/images/type';
 
 export default class Category extends Component {
     openListProduct() {
@@ -14,6 +15,7 @@ export default class Category extends Component {
         navigation.navigate('Screen_ProductList');
     }
     render() {
+        const { types } = this.props;
         return (
             <View style={styles.wrapCategory}>
                 <View style={{ height: 50, justifyContent: 'center' }}>
@@ -21,21 +23,13 @@ export default class Category extends Component {
                 </View>
                 <View style={{ flex: 4, alignItems: 'center' }}>
                     <Swiper width={width - 40} height={(width - 40) / 2} autoplay autoplayTimeout={5}>
-                        <TouchableOpacity onPress={this.openListProduct.bind(this)}>
-                            <ImageBackground source={imgLittle} style={styles.imgStyle}>
-                                <Text style={styles.textContent}>Little Dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={this.openListProduct.bind(this)}>
-                            <ImageBackground source={imgMaxi} style={styles.imgStyle}>
-                                <Text style={styles.textContent}>Maxi Dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={this.openListProduct.bind(this)}>
-                            <ImageBackground source={imgParty} style={styles.imgStyle}>
-                                <Text style={styles.textContent}>Party Dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
+                        { types.map(e => (
+                            <TouchableOpacity onPress={this.openListProduct.bind(this)} key={e.id}>
+                                <ImageBackground source={{ uri: 'http://10.0.136.37:8080/api/images/type/${e.name}' }} style={styles.imgStyle}>
+                                    <Text style={styles.textContent}>{e.name}</Text>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                        )) }
                     </Swiper>
                 </View>
             </View>

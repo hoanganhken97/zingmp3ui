@@ -159,10 +159,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#d8dde0'
     },
     wrapElement: {
-        height: width / 2.5,
+        height: width / 2.7,
         margin: 10,
         backgroundColor: '#fff',
-        borderRadius: 5,
+        borderRadius: 3,
         padding: 10,
         flexDirection: 'row',
         alignItems: 'center'
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     imgStyle: {
         width: (((width / 3)) * 361) / 452,
         height: (width / 3),
-        borderRadius: 5,
+        borderRadius: 3,
     },
     wrapContent: {
         height: (width / 3),
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
         margin: 10,
         marginTop: 0,
         backgroundColor: '#4267B2',
-        borderRadius: 5,
+        borderRadius: 3,
         alignItems: 'center',
         justifyContent: 'center'
     },

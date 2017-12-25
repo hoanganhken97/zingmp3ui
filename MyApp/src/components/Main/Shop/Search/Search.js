@@ -6,8 +6,12 @@ import { View, Text, StyleSheet,
 import backList from '../../../../img/appIcon/backList.png';
 import imgSp1 from '../../../../img/temp/sp1.jpeg';
 
-
+//Hàm viết hoa các chữ cái đầu trong chuỗi.
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+}
 const { width, height } = Dimensions.get('window');
+
 export default class Search extends Component {
     render() {
         const { wrapProductList, wrapperElement, productImg, productInfo,
@@ -18,7 +22,7 @@ export default class Search extends Component {
                 <View style={wrapperElement}>
                     <Image style={productImg} source={imgSp1} />
                     <View style={productInfo}>
-                        <Text style={textName}>Lace Sleeve Si</Text>
+                        <Text style={textName}>{toTitleCase('lace sleeve si')}</Text>
                         <Text style={textPrice}>100$</Text>
                         <Text style={textMaterial}>Material Silk</Text>
                         <View style={lastRowInfo}>
@@ -33,7 +37,7 @@ export default class Search extends Component {
                 <View style={wrapperElement}>
                     <Image style={productImg} source={imgSp1} />
                     <View style={productInfo}>
-                        <Text style={textName}>Lace Sleeve Si</Text>
+                        <Text style={textName}>{toTitleCase('lace sleeve si')}</Text>
                         <Text style={textPrice}>100$</Text>
                         <Text style={textMaterial}>Material Silk</Text>
                         <View style={lastRowInfo}>
@@ -48,7 +52,7 @@ export default class Search extends Component {
                 <View style={wrapperElement}>
                     <Image style={productImg} source={imgSp1} />
                     <View style={productInfo}>
-                        <Text style={textName}>Lace Sleeve Si</Text>
+                        <Text style={textName}>{toTitleCase('lace sleeve si')}</Text>
                         <Text style={textPrice}>100$</Text>
                         <Text style={textMaterial}>Material Silk</Text>
                         <View style={lastRowInfo}>
@@ -63,7 +67,7 @@ export default class Search extends Component {
                 <View style={wrapperElement}>
                     <Image style={productImg} source={imgSp1} />
                     <View style={productInfo}>
-                        <Text style={textName}>Lace Sleeve Si</Text>
+                        <Text style={textName}>{toTitleCase('lace sleeve si')}</Text>
                         <Text style={textPrice}>100$</Text>
                         <Text style={textMaterial}>Material Silk</Text>
                         <View style={lastRowInfo}>

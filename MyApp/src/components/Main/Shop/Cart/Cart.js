@@ -4,7 +4,12 @@ import { View, Text, TouchableOpacity, StyleSheet,
 
 import imgSp1 from '../../../../img/temp/sp1.jpeg';
 
+//Hàm viết hoa các chữ cái đầu trong chuỗi.
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+}
 const { width, height } = Dimensions.get('window');
+
 export default class Cart extends Component {
     render() {
         const { container, wrapElement, imgStyle,
@@ -18,7 +23,7 @@ export default class Cart extends Component {
                         <Image source={imgSp1} style={imgStyle} />
                         <View style={wrapContent}>
                             <View style={header}>
-                                <Text style={titleStyle}>Lace Sleeve Si</Text>
+                                <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
                                 <TouchableOpacity>
                                     <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
                                 </TouchableOpacity>
@@ -44,7 +49,7 @@ export default class Cart extends Component {
                         <Image source={imgSp1} style={imgStyle} />
                         <View style={wrapContent}>
                             <View style={header}>
-                                <Text style={titleStyle}>Lace Sleeve Si</Text>
+                                <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
                                 <TouchableOpacity>
                                     <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
                                 </TouchableOpacity>
@@ -70,7 +75,7 @@ export default class Cart extends Component {
                         <Image source={imgSp1} style={imgStyle} />
                         <View style={wrapContent}>
                             <View style={header}>
-                                <Text style={titleStyle}>Lace Sleeve Si</Text>
+                                <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
                                 <TouchableOpacity>
                                     <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
                                 </TouchableOpacity>
@@ -96,7 +101,7 @@ export default class Cart extends Component {
                         <Image source={imgSp1} style={imgStyle} />
                         <View style={wrapContent}>
                             <View style={header}>
-                                <Text style={titleStyle}>Lace Sleeve Si</Text>
+                                <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
                                 <TouchableOpacity>
                                     <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
                                 </TouchableOpacity>
@@ -122,7 +127,7 @@ export default class Cart extends Component {
                         <Image source={imgSp1} style={imgStyle} />
                         <View style={wrapContent}>
                             <View style={header}>
-                                <Text style={titleStyle}>Lace Sleeve Si</Text>
+                                <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
                                 <TouchableOpacity>
                                     <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
                                 </TouchableOpacity>

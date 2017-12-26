@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import Swiper from 'react-native-swiper';
 
 // import imgLittle from '../../../../img/temp/little.jpg';
@@ -7,8 +7,8 @@ import Swiper from 'react-native-swiper';
 // import imgParty from '../../../../img/temp/party.jpg';
 
 const { width, height } = Dimensions.get('window');
-const url = 'http://10.0.136.37:8080/api/images/type';
 
+const url = 'http://eotw2012.000webhostapp.com/api/images/type/';
 export default class Category extends Component {
     openListProduct() {
         const { navigation } = this.props;
@@ -25,7 +25,7 @@ export default class Category extends Component {
                     <Swiper width={width - 40} height={(width - 40) / 2} autoplay autoplayTimeout={5}>
                         { types.map(e => (
                             <TouchableOpacity onPress={this.openListProduct.bind(this)} key={e.id}>
-                                <ImageBackground source={{ uri: 'http://10.0.136.37:8080/api/images/type/${e.name}' }} style={styles.imgStyle}>
+                                <ImageBackground source={{ uri: `${url}${e.image}` }} style={styles.imgStyle}>
                                     <Text style={styles.textContent}>{e.name}</Text>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-        title: {
+    title: {
         fontSize: 20,
         color: '#606467',
         fontFamily: 'sans-serif-medium'

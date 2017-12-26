@@ -25,11 +25,11 @@ export default class Shop extends Component {
             types: []
         };
     }
-
     componentDidMount() {
-        fetch('http://10.0.136.37:8080/api/') //eslint-disable-line
+        fetch('http://eotw2012.000webhostapp.com/api/') //eslint-disable-line
         .then(res => res.json())
         .then(resJSON => {
+            console.log(resJSON);
             const { type } = resJSON;
             this.setState({ types: type });
         });
@@ -91,8 +91,8 @@ export default class Shop extends Component {
                     </TabNavigator.Item>
                 </TabNavigator>
             </View>
-    );
-  }
+        );
+    }
 }
 
 const styles = StyleSheet.create({

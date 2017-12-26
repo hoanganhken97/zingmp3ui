@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, ListView } from 'react-native';
 
 import imgSp1 from '../../../../img/temp/sp1.jpeg';
 import imgSp2 from '../../../../img/temp/sp2.jpeg';
@@ -10,6 +10,14 @@ import imgSp5 from '../../../../img/temp/sp5.jpeg';
 const { width, height } = Dimensions.get('window');
 
 export default class TopProduct extends Component {
+    constructor(props) {
+        super(props);
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        const { topProducts } = this.props;
+        this.state = {
+            dataSource: ds.cloneWithRows(topProducts)
+        };
+    }
     openProductDetail() {
         const { navigation } = this.props;
         navigation.navigate('Screen_ProductDetail');
@@ -20,28 +28,14 @@ export default class TopProduct extends Component {
                 <View style={styles.wrapText}>
                     <Text style={styles.textStyle}>TOP PRODUCT</Text>
                 </View>
-                <View style={styles.wrapProduct}>
-                    <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)}>
-                        <Image source={imgSp1} style={styles.imgStyle} />
-                        <Text style={styles.textProductName}>PRODUCT NAME</Text>
-                        <Text style={styles.textProductPrice}>150$</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)}>
-                        <Image source={imgSp2} style={styles.imgStyle} />
-                        <Text style={styles.textProductName}>PRODUCT NAME</Text>
-                    	<Text style={styles.textProductPrice}>250$</Text>
-                    </TouchableOpacity>
-                    <View style={{ height: 10, width }} />
-                    <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)}>
-                        <Image source={imgSp3} style={styles.imgStyle} />
-                        <Text style={styles.textProductName}>PRODUCT NAME</Text>
-                    	<Text style={styles.textProductPrice}>350$</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)}>
-                        <Image source={imgSp4} style={styles.imgStyle} />
-                        <Text style={styles.textProductName}>PRODUCT NAME</Text>
-                    	<Text style={styles.textProductPrice}>450$</Text>
-                    </TouchableOpacity>
+                <View Style={styles.wrapProduct}>
+                    {this.props.topProducts.map(e => (
+                        <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)} key={e.id}>
+                            <Image source={imgSp2} style={styles.imgStyle} />
+                            <Text style={styles.textProductName}>PRODUCT NAME</Text>
+                            <Text style={styles.textProductPrice}>250$</Text>
+                        </TouchableOpacity>
+                    ))}
                 </View>
             </View>
         );

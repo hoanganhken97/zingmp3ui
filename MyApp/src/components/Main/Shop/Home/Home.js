@@ -5,13 +5,18 @@ import Category from './Category';
 import TopProduct from './TopProduct';
 
 export default class Home extends Component {
+    // componentWillReceiveProps(nextProps) {
+    //     console.log('----------------------');
+    //     console.log(nextProps.topProducts);
+    //     console.log('----------------------');
+    // }
     render() {
-        const { types } = this.props;
+        const { types, topProducts } = this.props;
         return (
         <ScrollView style={styles.wrapAll}>
             <Collection />
             <Category navigation={this.props.navigation} types={types} />
-            <TopProduct navigation={this.props.navigation} />
+            <TopProduct navigation={this.props.navigation} topProducts={topProducts} />
         </ScrollView>
     );
   }

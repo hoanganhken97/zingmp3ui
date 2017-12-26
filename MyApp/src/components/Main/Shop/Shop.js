@@ -22,16 +22,16 @@ export default class Shop extends Component {
         super(props);
         this.state = {
             selectedTab: 'home',
-            types: []
+            types: [],
+            topProducts: []
         };
     }
     componentDidMount() {
         fetch('http://eotw2012.000webhostapp.com/api/') //eslint-disable-line
         .then(res => res.json())
         .then(resJSON => {
-            console.log(resJSON);
-            const { type } = resJSON;
-            this.setState({ types: type });
+            const { type, product } = resJSON;
+            this.setState({ types: type, topProducts: product });
         });
     }
     openMenu() {
@@ -40,7 +40,7 @@ export default class Shop extends Component {
     }
 
     render() {
-        const { types, selectedTab } = this.state;
+        const { types, selectedTab, topProducts } = this.state;
         return (
             <View style={{ flex: 1 }} >
                 <Header onOpen={this.openMenu.bind(this)} />
@@ -53,7 +53,7 @@ export default class Shop extends Component {
                     renderSelectedIcon={() => <Image source={homeIconSelect} style={styles.iconTab} />}
                     selectedTitleStyle={{ fontFamily: 'sans-serif-medium' }}
                     >
-                        <Home navigation={this.props.navigation} types={types} />
+                        <Home navigation={this.props.navigation} types={types} topProducts={topProducts} />
                     </TabNavigator.Item>
 
                     <TabNavigator.Item

@@ -9,6 +9,8 @@ import imgSp5 from '../../../../img/temp/sp5.jpeg';
 
 const { width, height } = Dimensions.get('window');
 
+const url = 'http://eotw2012.000webhostapp.com/api/images/product/';
+
 export default class TopProduct extends Component {
     constructor(props) {
         super(props);
@@ -28,12 +30,12 @@ export default class TopProduct extends Component {
                 <View style={styles.wrapText}>
                     <Text style={styles.textStyle}>TOP PRODUCT</Text>
                 </View>
-                <View Style={styles.wrapProduct}>
+                <View style={styles.wrapProduct}>
                     {this.props.topProducts.map(e => (
                         <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)} key={e.id}>
-                            <Image source={imgSp2} style={styles.imgStyle} />
-                            <Text style={styles.textProductName}>PRODUCT NAME</Text>
-                            <Text style={styles.textProductPrice}>250$</Text>
+                            <Image source={{ uri: `${url}${e.images[0]}`}} style={styles.imgStyle} />
+                            <Text style={styles.textProductName}>{e.name.toUpperCase()}</Text>
+                            <Text style={styles.textProductPrice}>{e.price}$</Text>
                         </TouchableOpacity>
                     ))}
                 </View>
@@ -51,23 +53,27 @@ const styles = StyleSheet.create({
         paddingTop: 0
     },
     wrapText: {
-        height: 50,
-        justifyContent: 'center'
+        height: 40,
+        flexDirection: 'row',
+        alignItems: 'center'
     },
     textStyle: {
         fontSize: 20,
         color: '#606467',
-        fontFamily: 'sans-serif-medium'
+        fontFamily: 'sans-serif-medium',
+        alignSelf: 'center',
+        marginTop: 5
     },
     wrapProduct: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'space-around'
+        justifyContent: 'space-between'
     },
     wrapElement: {
         width: (width - 50) / 2,
         borderWidth: 1,
         borderColor: 'rgba(0,0,0,0.1)',
+        marginTop: 10
     },
     imgStyle: {
         width: (width - 50) / 2,

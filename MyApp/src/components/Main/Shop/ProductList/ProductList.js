@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
     wrapProductList: {
         flex: 1,
         backgroundColor: '#d8dde0',
-        padding: 10,
     },
     wrapperAll: {
         backgroundColor: '#fff',
@@ -126,7 +125,6 @@ const styles = StyleSheet.create({
         height: height / 15,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 5,
         alignItems: 'center'
     },
     iconBack: {

@@ -7,17 +7,20 @@ import iconCart from '../../../../../src/img/appIcon/cartfull.png';
 import sp3 from '../../../../../src/img/temp/sp3.jpeg';
 import sp4 from '../../../../../src/img/temp/sp4.jpeg';
 
+const url = 'http://eotw2012.000webhostapp.com/api/images/product/';
+
 export default class ProductDetail extends Component {
     render() {
         const { wrapper, container, header, wrapImg, wrapContent,
                 iconStyle, imgStyle, wrapImgElement, titleContent,
                 txtTitle, txtDevide, txtPrice, txtContent, footer,
                 txtContentStyle, txtFooter, txtColor, wrapFooterColor, colorStyle } = styles;
+        const { name, id, price, color, material, description, images } = this.props.navigation.state.params.productDetail;
         return (
             <View style={wrapper}>
                 <View style={container}>
                     <View style={header}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => { this.props.navigation.goBack(); }}>
                             <Image source={iconBack} style={iconStyle} />
                         </TouchableOpacity>
                         <TouchableOpacity>
@@ -27,27 +30,33 @@ export default class ProductDetail extends Component {
                     <View style={wrapImg}>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                             <View style={wrapImgElement}>
-                                <Image source={sp3} style={imgStyle} />
+                                <Image source={{ uri: `${url}${images[0]}` }} style={imgStyle} />
                             </View>
                             <View style={wrapImgElement}>
-                                <Image source={sp4} style={imgStyle} />
+                                <Image source={{ uri: `${url}${images[1]}` }} style={imgStyle} />
                             </View>
                         </ScrollView>
                     </View>
                     <View style={wrapContent}>
                         <View style={titleContent}>
-                            <Text style={txtTitle}>{'black off the'.toUpperCase()}</Text>
+                            <Text style={txtTitle}>{name.toUpperCase()}</Text>
                             <Text style={txtDevide}> / </Text>
-                            <Text style={txtPrice}>200$</Text>
+                            <Text style={txtPrice}>{price}$</Text>
                         </View>
                         <View style={txtContent}>
-                            <Text style={txtContentStyle}>A delicate layer of eyelash lace brings dreamy elegance to this piece, while smooth, lightweight lining feels luxurious against your skin. We love it with heels for a look that fits in on date night, or with cool booties to add an edge.</Text>
+                            <Text style={txtContentStyle}>{description}</Text>
                         </View>
                         <View style={footer}>
-                            <Text style={txtFooter}>Material Leather</Text>
+                            <Text style={txtFooter}>Material {material}</Text>
                             <View style={wrapFooterColor}>
-                                <Text style={txtColor}>Color Orange</Text>
-                                <View style={colorStyle} />
+                                <Text style={txtColor}>Color {color}</Text>
+                                <View
+                                    style={{ width: 20,
+                                    height: 20,
+                                    borderRadius: 20 / 2,
+                                    backgroundColor: color.toLowerCase(),
+                                    borderColor: '#C52F79' }}
+                                />
                             </View>
                         </View>
                     </View>
@@ -145,11 +154,11 @@ const styles = StyleSheet.create({
         fontSize: 17,
         marginRight: 20
     },
-    colorStyle: {
-        width: 20,
-        height: 20,
-        borderRadius: 20 / 2,
-        backgroundColor: 'ORANGE'.toLowerCase(),
-        borderColor: '#C52F79'
-    }
+    // colorStyle: {
+    //     width: 20,
+    //     height: 20,
+    //     borderRadius: 20 / 2,
+    //     backgroundColor: 'ORANGE'.toLowerCase(),
+    //     borderColor: '#C52F79'
+    // }
 });

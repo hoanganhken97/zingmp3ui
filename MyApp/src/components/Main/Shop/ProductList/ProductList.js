@@ -165,8 +165,9 @@ const styles = StyleSheet.create({
         fontWeight: '400'
     },
     textPrice: {
-        fontFamily: 'sans-serif-medium',
-        color: '#C52F79'
+        fontFamily: 'monospace',
+        fontSize: 15,
+        color: '#C52F79',
     },
     textMaterial: {
         fontFamily: 'sans-serif-medium',

@@ -20,20 +20,21 @@ export default class TopProduct extends Component {
             dataSource: ds.cloneWithRows(topProducts)
         };
     }
-    openProductDetail() {
+    openProductDetail(product) {
         const { navigation } = this.props;
-        navigation.navigate('Screen_ProductDetail');
+        navigation.navigate('Screen_ProductDetail', { productDetail: product });
     }
     render() {
+        const { topProducts } = this.props;
         return (
             <View style={styles.wrapAll}>
                 <View style={styles.wrapText}>
                     <Text style={styles.textStyle}>TOP PRODUCT</Text>
                 </View>
                 <View style={styles.wrapProduct}>
-                    {this.props.topProducts.map(e => (
-                        <TouchableOpacity style={styles.wrapElement} onPress={this.openProductDetail.bind(this)} key={e.id}>
-                            <Image source={{ uri: `${url}${e.images[0]}`}} style={styles.imgStyle} />
+                    {topProducts.map(e => (
+                        <TouchableOpacity style={styles.wrapElement} onPress={() => { this.openProductDetail(e); }} key={e.id}>
+                            <Image source={{ uri: `${url}${e.images[0]}` }} style={styles.imgStyle} />
                             <Text style={styles.textProductName}>{e.name.toUpperCase()}</Text>
                             <Text style={styles.textProductPrice}>{e.price}$</Text>
                         </TouchableOpacity>

@@ -15,140 +15,39 @@ export default class Cart extends Component {
         const { container, wrapElement, imgStyle,
                 wrapContent, titleStyle, priceStyle,
                 header, footer, numberOfProduct, showDetailContainer,
-                textDetail, checkoutButton, checkoutTitle} = styles;
+                textDetail, checkoutButton, checkoutTitle } = styles;
+        const { cartArray } = this.props;
         return (
             <View style={container} >
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <View style={wrapElement}>
-                        <Image source={imgSp1} style={imgStyle} />
-                        <View style={wrapContent}>
-                            <View style={header}>
-                                <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
-                                <TouchableOpacity>
-                                    <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <Text style={priceStyle}>117$</Text>
-                            <View style={footer}>
-                                <View style={numberOfProduct}>
+                    { cartArray.map(product => (
+                        <View style={wrapElement} key={product}>
+                            <Image source={imgSp1} style={imgStyle} />
+                            <View style={wrapContent}>
+                                <View style={header}>
+                                    <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
                                     <TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>-</Text>
-                                    </TouchableOpacity>
-                                    <Text style={{ color: 'black' }}>3</Text>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>+</Text>
+                                        <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
                                     </TouchableOpacity>
                                 </View>
-                                <TouchableOpacity style={showDetailContainer}>
-                                    <Text style={textDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={wrapElement}>
-                        <Image source={imgSp1} style={imgStyle} />
-                        <View style={wrapContent}>
-                            <View style={header}>
-                                <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
-                                <TouchableOpacity>
-                                    <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <Text style={priceStyle}>117$</Text>
-                            <View style={footer}>
-                                <View style={numberOfProduct}>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>-</Text>
-                                    </TouchableOpacity>
-                                    <Text style={{ color: 'black' }}>3</Text>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>+</Text>
+                                <Text style={priceStyle}>117$</Text>
+                                <View style={footer}>
+                                    <View style={numberOfProduct}>
+                                        <TouchableOpacity>
+                                            <Text style={{ color: 'black' }}>-</Text>
+                                        </TouchableOpacity>
+                                        <Text style={{ color: 'black' }}>3</Text>
+                                        <TouchableOpacity>
+                                            <Text style={{ color: 'black' }}>+</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                    <TouchableOpacity style={showDetailContainer}>
+                                        <Text style={textDetail}>SHOW DETAILS</Text>
                                     </TouchableOpacity>
                                 </View>
-                                <TouchableOpacity style={showDetailContainer}>
-                                    <Text style={textDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
                             </View>
                         </View>
-                    </View>
-                    <View style={wrapElement}>
-                        <Image source={imgSp1} style={imgStyle} />
-                        <View style={wrapContent}>
-                            <View style={header}>
-                                <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
-                                <TouchableOpacity>
-                                    <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <Text style={priceStyle}>117$</Text>
-                            <View style={footer}>
-                                <View style={numberOfProduct}>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>-</Text>
-                                    </TouchableOpacity>
-                                    <Text style={{ color: 'black' }}>3</Text>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>+</Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <TouchableOpacity style={showDetailContainer}>
-                                    <Text style={textDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={wrapElement}>
-                        <Image source={imgSp1} style={imgStyle} />
-                        <View style={wrapContent}>
-                            <View style={header}>
-                                <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
-                                <TouchableOpacity>
-                                    <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <Text style={priceStyle}>117$</Text>
-                            <View style={footer}>
-                                <View style={numberOfProduct}>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>-</Text>
-                                    </TouchableOpacity>
-                                    <Text style={{ color: 'black' }}>3</Text>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>+</Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <TouchableOpacity style={showDetailContainer}>
-                                    <Text style={textDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={wrapElement}>
-                        <Image source={imgSp1} style={imgStyle} />
-                        <View style={wrapContent}>
-                            <View style={header}>
-                                <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
-                                <TouchableOpacity>
-                                    <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <Text style={priceStyle}>117$</Text>
-                            <View style={footer}>
-                                <View style={numberOfProduct}>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>-</Text>
-                                    </TouchableOpacity>
-                                    <Text style={{ color: 'black' }}>3</Text>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>+</Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <TouchableOpacity style={showDetailContainer}>
-                                    <Text style={textDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                    </View>
+                    ))}
                 </ScrollView>
                 <TouchableOpacity style={checkoutButton}>
                     <Text style={checkoutTitle}>TOTAL {1000}$ CHECKOUT NOW</Text>

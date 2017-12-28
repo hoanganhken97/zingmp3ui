@@ -7,6 +7,7 @@ import Contact from './Contact/Contact';
 import Search from './Search/Search';
 import Cart from './Cart/Cart';
 import Header from './Header';
+import Global from '../../../components/Global';
 
 import homeIconSelect from '../../../img/appIcon/home.png';
 import homeIcon from '../../../img/appIcon/home0.png';
@@ -23,9 +24,12 @@ export default class Shop extends Component {
         this.state = {
             selectedTab: 'home',
             types: [],
-            topProducts: []
+            topProducts: [],
+            cartArray: []
         };
+        Global.addProductToCart = this.addProductToCart.bind(this);
     }
+
     componentDidMount() {
         fetch('http://eotw2012.000webhostapp.com/api/') //eslint-disable-line
         .then(res => res.json())
@@ -34,13 +38,18 @@ export default class Shop extends Component {
             this.setState({ types: type, topProducts: product });
         });
     }
+
+    addProductToCart(product) {
+        this.setState({ cartArray: this.state.cartArray.concat(product) });
+    }
+
     openMenu() {
         const { navigation } = this.props;
         navigation.navigate('DrawerOpen');
     }
 
     render() {
-        const { types, selectedTab, topProducts } = this.state;
+        const { types, selectedTab, topProducts, cartArray } = this.state;
         return (
             <View style={{ flex: 1 }} >
                 <Header onOpen={this.openMenu.bind(this)} />
@@ -63,9 +72,9 @@ export default class Shop extends Component {
                     renderIcon={() => <Image source={cartIcon} style={styles.iconTab} />}
                     renderSelectedIcon={() => <Image source={cartIconSelect} style={styles.iconTab} />}
                     selectedTitleStyle={{ fontFamily: 'sans-serif-medium' }}
-                    badgeText="1"
+                    badgeText={cartArray.length}
                     >
-                        <Cart navigation={this.props.navigation} />
+                        <Cart navigation={this.props.navigation} cartArray={cartArray} />
                     </TabNavigator.Item>
 
                     <TabNavigator.Item

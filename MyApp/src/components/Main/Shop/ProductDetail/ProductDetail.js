@@ -4,18 +4,21 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions,
 
 import iconBack from '../../../../../src/img/appIcon/back.png';
 import iconCart from '../../../../../src/img/appIcon/cartfull.png';
-import sp3 from '../../../../../src/img/temp/sp3.jpeg';
-import sp4 from '../../../../../src/img/temp/sp4.jpeg';
+import Global from '../../../Global';
 
 const url = 'http://eotw2012.000webhostapp.com/api/images/product/';
 
 export default class ProductDetail extends Component {
+    addThisProductToCart() {
+        const { productDetail } = this.props.navigation.state.params;
+        Global.addProductToCart(productDetail);
+    }
     render() {
         const { wrapper, container, header, wrapImg, wrapContent,
                 iconStyle, imgStyle, wrapImgElement, titleContent,
                 txtTitle, txtDevide, txtPrice, txtContent, footer,
-                txtContentStyle, txtFooter, txtColor, wrapFooterColor, colorStyle } = styles;
-        const { name, id, price, color, material, description, images } = this.props.navigation.state.params.productDetail;
+                txtContentStyle, txtFooter, txtColor, wrapFooterColor } = styles;
+        const { name, price, color, material, description, images } = this.props.navigation.state.params.productDetail;
         return (
             <View style={wrapper}>
                 <View style={container}>
@@ -23,7 +26,7 @@ export default class ProductDetail extends Component {
                         <TouchableOpacity onPress={() => { this.props.navigation.goBack(); }}>
                             <Image source={iconBack} style={iconStyle} />
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                            <TouchableOpacity onPress={this.addThisProductToCart.bind(this)}>
                             <Image source={iconCart} style={iconStyle} />
                         </TouchableOpacity>
                     </View>

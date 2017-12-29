@@ -1,5 +1,5 @@
 const signIn = (email, password) => (
-    fetch('http://10.0.136.37:8080/api/login.php',
+    fetch('http://10.0.136.37:8080/api/login.php', //eslint-disable-line
     {
         method: 'POST',
         headers: {

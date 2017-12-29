@@ -32,6 +32,8 @@ export default class Cart extends Component {
                 header, footer, numberOfProduct, showDetailContainer,
                 textDetail, checkoutButton, checkoutTitle } = styles;
         const { cartArray } = this.props;
+        const arrSum = cartArray.map(e => e.product.price * e.quantity);
+        const Sum = arrSum.length ? arrSum.reduce((a, b) => a + b) : 0;
         return (
             <View style={container} >
                 <ListView
@@ -67,7 +69,7 @@ export default class Cart extends Component {
                     )}
                 />
                 <TouchableOpacity style={checkoutButton}>
-                    <Text style={checkoutTitle}>TOTAL {1000}$ CHECKOUT NOW</Text>
+                    <Text style={checkoutTitle}>TOTAL {Sum}$ CHECKOUT NOW</Text>
                 </TouchableOpacity>
             </View>
     );

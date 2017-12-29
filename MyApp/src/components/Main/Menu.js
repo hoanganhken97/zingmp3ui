@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native';
+
 import imgAvatar from '../../img/temp/Avatar.png';
 
-const { width, height } = Dimensions.get('window');
+import Global from '../Global';
 
 export default class Menu extends Component {
     constructor(props) {
         super(props);
-        this.state = { isLogin: false };
+        this.state = { user: null };
+        Global.onSignIn = this.onSignIn.bind(this);
+    }
+
+    onSignIn(user) {
+        this.setState({ user });
     }
     render() {
+        const { user } = this.state;
         const logoutJSX = (
             <View>
                 <TouchableOpacity style={styles.btnLoginStyle} onPress={() => this.props.navigation.navigate('Screen_Authentication')}>
@@ -19,7 +26,7 @@ export default class Menu extends Component {
         );
         const loginJSX = (
             <View style={{ flex: 1, justifyContent: 'space-between' }}>
-                <Text style={styles.profileName}>Văn Minh Nguyên</Text>
+                <Text style={styles.profileName}>{user ? user.name : ''}</Text>
                 <View>
                     <TouchableOpacity style={styles.btnElement} onPress={() => this.props.navigation.navigate('Screen_OrderHistory')} >
                         <Text style={styles.btnTextElement}>Order History</Text>
@@ -34,7 +41,7 @@ export default class Menu extends Component {
                 <View />
             </View>
         );
-        const mainJSX = this.state.isLogin ? loginJSX : logoutJSX;
+        const mainJSX = this.state.user ? loginJSX : logoutJSX;
         return (
             <View style={styles.wrapMenu}>
                 <Image source={imgAvatar} style={styles.avatarStyle} />

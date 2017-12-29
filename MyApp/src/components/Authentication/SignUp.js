@@ -25,10 +25,10 @@ export default class SignUp extends Component {
 
     onSuccess() {
         Alert.alert(
-            'Success',
+            'Congratulation!!!',
             'Account created successfully',
             [
-                { text: 'OK', onPress: () => this.props.navigation.navigate('Screen_Authentication') }
+                { text: 'OK', onPress: this.props.gotoSignIn() }
             ],
             { cancelable: false }
         );

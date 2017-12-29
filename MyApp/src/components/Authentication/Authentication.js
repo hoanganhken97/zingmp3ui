@@ -18,6 +18,10 @@ export default class Authentication extends Component {
         this.state = { isSignIn: true };
     }
 
+    gotoSignIn() {
+        this.setState({ isSignIn: true });
+    }
+
     signIn() {
         this.setState({ isSignIn: true });
     }
@@ -26,13 +30,17 @@ export default class Authentication extends Component {
         this.setState({ isSignIn: false });
     }
 
+    backToMain() {
+        const { navigation } = this.props;
+        navigation.goBack()
+    }
     render() {
     const { isSignIn } = this.state;
-    const mainJSX = isSignIn ? <SignIn navigation={this.props.navigation} /> : <SignUp navigation={this.props.navigation} /> ;
+    const mainJSX = isSignIn ? <SignIn backToMain={this.backToMain.bind(this)}/> : <SignUp gotoSignIn={this.gotoSignIn.bind(this)} />;
     return (
         <View style={styles.wrapAuthen}>
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => { this.props.navigation.navigate('Screen_Main'); }}>
+                <TouchableOpacity onPress={this.backToMain.bind(this)}>
                     <Image source={icBack} style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.title}>Disney Shop</Text>

@@ -3,6 +3,10 @@ import { View, Text, TouchableOpacity,
         Image, Dimensions, StyleSheet, TextInput }
         from 'react-native';
 
+import register from '../../api/register';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+
 import icLogo from '../../../src/img/appIcon/ic_logo.png';
 import icBack from '../../../src/img/appIcon/back_white.png';
 
@@ -13,36 +17,18 @@ export default class Authentication extends Component {
         super(props);
         this.state = { isSignIn: true };
     }
+
     signIn() {
         this.setState({ isSignIn: true });
     }
+
     signUp() {
         this.setState({ isSignIn: false });
     }
 
     render() {
-    const signInJSX = (
-        <View>
-            <TextInput style={styles.textInput} placeholder="Enter your email" underlineColorAndroid='rgba(0,0,0,0)' />
-            <TextInput style={styles.textInput} placeholder="Enter your Password" underlineColorAndroid='rgba(0,0,0,0)' />
-            <TouchableOpacity style={styles.wrapBtnLoginNow}>
-                <Text style={styles.btnBigText}>SIGN IN NOW</Text>
-            </TouchableOpacity>
-        </View>
-    );
-    const signUpJSX = (
-        <View>
-            <TextInput style={styles.textInput} placeholder="Enter your name" underlineColorAndroid='rgba(0,0,0,0)' />
-            <TextInput style={styles.textInput} placeholder="Enter your password" underlineColorAndroid='rgba(0,0,0,0)' />
-            <TextInput style={styles.textInput} placeholder="Enter your Password" underlineColorAndroid='rgba(0,0,0,0)' />
-            <TextInput style={styles.textInput} placeholder="Re-enter your Password" underlineColorAndroid='rgba(0,0,0,0)' />
-            <TouchableOpacity style={styles.wrapBtnLoginNow}>
-                <Text style={styles.btnBigText}>SIGN UP NOW</Text>
-            </TouchableOpacity>
-        </View>
-    );
     const { isSignIn } = this.state;
-    const mainJSX = isSignIn ? signInJSX : signUpJSX;
+    const mainJSX = isSignIn ? <SignIn navigation={this.props.navigation} /> : <SignUp navigation={this.props.navigation} /> ;
     return (
         <View style={styles.wrapAuthen}>
             <View style={styles.header}>
@@ -120,25 +106,5 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 20,
         borderTopRightRadius: 20,
         marginLeft: 1,
-    },
-    textInput: {
-        height: 50,
-        backgroundColor: '#FFF',
-        marginBottom: 10,
-        borderRadius: 20,
-        paddingLeft: 25,
-    },
-    wrapBtnLoginNow: {
-        height: 50,
-        borderRadius: 20,
-        borderWidth: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: '#FFF'
-    },
-    btnBigText: {
-        fontSize: 15,
-        fontFamily: 'sans-serif-medium',
-        color: '#FFF'
     }
 });

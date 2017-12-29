@@ -7,7 +7,11 @@ import Contact from './Contact/Contact';
 import Search from './Search/Search';
 import Cart from './Cart/Cart';
 import Header from './Header';
+
 import Global from '../../../components/Global';
+import initData from '../../../api/initData';
+import saveCart from '../../../api/saveCart';
+import getCart from '../../../api/getCart';
 
 import homeIconSelect from '../../../img/appIcon/home.png';
 import homeIcon from '../../../img/appIcon/home0.png';
@@ -31,16 +35,20 @@ export default class Shop extends Component {
     }
 
     componentDidMount() {
-        fetch('http://eotw2012.000webhostapp.com/api/') //eslint-disable-line
-        .then(res => res.json())
+        initData()
         .then(resJSON => {
             const { type, product } = resJSON;
             this.setState({ types: type, topProducts: product });
         });
+        getCart()
+        .then(cartArray => this.setState({ cartArray }));
     }
 
     addProductToCart(product) {
-        this.setState({ cartArray: this.state.cartArray.concat(product) });
+        this.setState(
+            { cartArray: this.state.cartArray.concat({ product, quantity: 1 }) },
+            () => saveCart(this.state.cartArray)
+        );
     }
 
     openMenu() {

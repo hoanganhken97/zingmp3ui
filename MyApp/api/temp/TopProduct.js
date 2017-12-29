@@ -39,3 +39,12 @@
         <Text style={styles.textProductPrice}>250$</Text>
     </TouchableOpacity>
 ))} */}
+
+
+// {topProducts.map(e => (
+//     <TouchableOpacity style={styles.wrapElement} onPress={() => { this.openProductDetail(e); }} key={e.id}>
+//         <Image source={{ uri: `${url}${e.images[0]}` }} style={styles.imgStyle} />
+//         <Text style={styles.textProductName}>{e.name.toUpperCase()}</Text>
+//         <Text style={styles.textProductPrice}>{e.price}$</Text>
+//     </TouchableOpacity>
+// ))}

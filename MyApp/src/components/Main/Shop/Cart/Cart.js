@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet,
-        Dimensions, Image, ScrollView } from 'react-native';
+        Dimensions, Image, ListView } from 'react-native';
 
-import imgSp1 from '../../../../img/temp/sp1.jpeg';
+const url = 'http://10.0.136.37:8080/api/images/product/';
 
 //Hàm viết hoa các chữ cái đầu trong chuỗi.
 function toTitleCase(str) {
@@ -19,24 +19,26 @@ export default class Cart extends Component {
         const { cartArray } = this.props;
         return (
             <View style={container} >
-                <ScrollView showsVerticalScrollIndicator={false}>
-                    { cartArray.map(product => (
-                        <View style={wrapElement} key={product}>
-                            <Image source={imgSp1} style={imgStyle} />
+                <ListView
+                    enableEmptySections
+                    dataSource={new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }).cloneWithRows(cartArray)}
+                    renderRow={cartItem => (
+                        <View style={wrapElement}>
+                            <Image source={{ uri: `${url}${cartItem.product.images[0]}` }} style={imgStyle} />
                             <View style={wrapContent}>
                                 <View style={header}>
-                                    <Text style={titleStyle}>{toTitleCase('lace sleeve si')}</Text>
+                                    <Text style={titleStyle}>{toTitleCase(cartItem.product.name)}</Text>
                                     <TouchableOpacity>
                                         <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
                                     </TouchableOpacity>
                                 </View>
-                                <Text style={priceStyle}>117$</Text>
+                                <Text style={priceStyle}>{cartItem.product.price}$</Text>
                                 <View style={footer}>
                                     <View style={numberOfProduct}>
                                         <TouchableOpacity>
                                             <Text style={{ color: 'black' }}>-</Text>
                                         </TouchableOpacity>
-                                        <Text style={{ color: 'black' }}>3</Text>
+                                        <Text style={{ color: 'black' }}>{cartItem.quantity}</Text>
                                         <TouchableOpacity>
                                             <Text style={{ color: 'black' }}>+</Text>
                                         </TouchableOpacity>
@@ -47,8 +49,8 @@ export default class Cart extends Component {
                                 </View>
                             </View>
                         </View>
-                    ))}
-                </ScrollView>
+                    )}
+                />
                 <TouchableOpacity style={checkoutButton}>
                     <Text style={checkoutTitle}>TOTAL {1000}$ CHECKOUT NOW</Text>
                 </TouchableOpacity>

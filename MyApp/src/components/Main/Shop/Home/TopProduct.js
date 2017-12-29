@@ -9,17 +9,9 @@ import imgSp5 from '../../../../img/temp/sp5.jpeg';
 
 const { width, height } = Dimensions.get('window');
 
-const url = 'http://eotw2012.000webhostapp.com/api/images/product/';
+const url = 'http://10.0.136.37:8080/api/images/product/';
 
 export default class TopProduct extends Component {
-    constructor(props) {
-        super(props);
-        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-        const { topProducts } = this.props;
-        this.state = {
-            dataSource: ds.cloneWithRows(topProducts)
-        };
-    }
     openProductDetail(product) {
         const { navigation } = this.props;
         navigation.navigate('Screen_ProductDetail', { productDetail: product });
@@ -31,15 +23,19 @@ export default class TopProduct extends Component {
                 <View style={styles.wrapText}>
                     <Text style={styles.textStyle}>TOP PRODUCT</Text>
                 </View>
-                <View style={styles.wrapProduct}>
-                    {topProducts.map(e => (
-                        <TouchableOpacity style={styles.wrapElement} onPress={() => { this.openProductDetail(e); }} key={e.id}>
-                            <Image source={{ uri: `${url}${e.images[0]}` }} style={styles.imgStyle} />
-                            <Text style={styles.textProductName}>{e.name.toUpperCase()}</Text>
-                            <Text style={styles.textProductPrice}>{e.price}$</Text>
+
+                <ListView
+                    contentContainerStyle={styles.wrapProduct}
+                    enableEmptySections
+                    dataSource={new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }).cloneWithRows(topProducts)}
+                    renderRow={(product) => (
+                        <TouchableOpacity style={styles.wrapElement} onPress={() => { this.openProductDetail(product); }}>
+                            <Image source={{ uri: `${url}${product.images[0]}` }} style={styles.imgStyle} />
+                            <Text style={styles.textProductName}>{product.name.toUpperCase()}</Text>
+                            <Text style={styles.textProductPrice}>{product.price}$</Text>
                         </TouchableOpacity>
-                    ))}
-                </View>
+                    )}
+                />
             </View>
         );
     }

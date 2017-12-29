@@ -6,7 +6,7 @@ import iconBack from '../../../../../src/img/appIcon/back.png';
 import iconCart from '../../../../../src/img/appIcon/cartfull.png';
 import Global from '../../../Global';
 
-const url = 'http://eotw2012.000webhostapp.com/api/images/product/';
+const url = 'http://10.0.136.37:8080/api/images/product/';
 
 export default class ProductDetail extends Component {
     addThisProductToCart() {
@@ -56,6 +56,7 @@ export default class ProductDetail extends Component {
                                 <View
                                     style={{ width: 20,
                                     height: 20,
+                                    borderWidth: 1,
                                     borderRadius: 20 / 2,
                                     backgroundColor: color.toLowerCase(),
                                     borderColor: '#C52F79' }}

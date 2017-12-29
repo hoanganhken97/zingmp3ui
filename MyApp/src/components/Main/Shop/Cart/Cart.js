@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet,
         Dimensions, Image, ListView } from 'react-native';
 
+import Global from '../../../Global';
+
 const url = 'http://10.0.136.37:8080/api/images/product/';
 
 //Hàm viết hoa các chữ cái đầu trong chuỗi.
@@ -11,6 +13,19 @@ function toTitleCase(str) {
 const { width, height } = Dimensions.get('window');
 
 export default class Cart extends Component {
+    incQuantity(id) {
+        Global.increaseQuantity(id);
+    }
+    decQuantity(id) {
+        Global.decreaseQuantity(id);
+    }
+    deleteProduct(id) {
+        Global.removeProduct(id);
+    }
+    openProductDetail() {
+        const { navigation } = this.props;
+        navigation.navigate('Screen_ProductDetail');
+    }
     render() {
         const { container, wrapElement, imgStyle,
                 wrapContent, titleStyle, priceStyle,
@@ -28,18 +43,18 @@ export default class Cart extends Component {
                             <View style={wrapContent}>
                                 <View style={header}>
                                     <Text style={titleStyle}>{toTitleCase(cartItem.product.name)}</Text>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.deleteProduct(cartItem.product.id)}>
                                         <Text style={{ color: '#969696', fontSize: 15 }}>X</Text>
                                     </TouchableOpacity>
                                 </View>
                                 <Text style={priceStyle}>{cartItem.product.price}$</Text>
                                 <View style={footer}>
                                     <View style={numberOfProduct}>
-                                        <TouchableOpacity>
+                                        <TouchableOpacity onPress={() => this.decQuantity(cartItem.product.id)}>
                                             <Text style={{ color: 'black' }}>-</Text>
                                         </TouchableOpacity>
                                         <Text style={{ color: 'black' }}>{cartItem.quantity}</Text>
-                                        <TouchableOpacity>
+                                        <TouchableOpacity onPress={() => this.incQuantity(cartItem.product.id)}>
                                             <Text style={{ color: 'black' }}>+</Text>
                                         </TouchableOpacity>
                                     </View>

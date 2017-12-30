@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import imgAvatar from '../../img/temp/Avatar.png';
 
 import Global from '../Global';
+import saveToken from '../../api/saveToken';
 
 export default class Menu extends Component {
     constructor(props) {
@@ -14,7 +15,13 @@ export default class Menu extends Component {
 
     onSignIn(user) {
         this.setState({ user });
+        saveToken('');
     }
+
+    onSignOut() {
+        this.setState({ user: null });
+    }
+
     render() {
         const { user } = this.state;
         const logoutJSX = (
@@ -34,7 +41,7 @@ export default class Menu extends Component {
                     <TouchableOpacity style={styles.btnElement} onPress={() => this.props.navigation.navigate('Screen_ChangeInfo')} >
                         <Text style={styles.btnTextElement}>Change Info</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnElement} >
+                    <TouchableOpacity style={styles.btnElement} onPress={this.onSignOut.bind(this)}>
                         <Text style={styles.btnTextElement}>Sign Out</Text>
                     </TouchableOpacity>
                 </View>

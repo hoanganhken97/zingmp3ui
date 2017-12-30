@@ -36,22 +36,25 @@ export default class Menu extends Component {
             <View style={{ flex: 1, justifyContent: 'space-between' }}>
                 <Text style={styles.profileName}>{user ? user.name : ''}</Text>
                 <View>
-                    <TouchableOpacity style={styles.btnElement} onPress={() => this.props.navigation.navigate('Screen_OrderHistory')} >
+                    <TouchableOpacity
+                        style={styles.btnElement}
+                        onPress={() => this.props.navigation.navigate('Screen_OrderHistory')}
+                    >
                         <Text style={styles.btnTextElement}>Order History</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnElement} onPress={() => this.props.navigation.navigate('Screen_ChangeInfo')} >
+
+                    <TouchableOpacity
+                        style={styles.btnElement}
+                        onPress={() => this.props.navigation.navigate('Screen_ChangeInfo', { userInfo: user })}
+                    >
                         <Text style={styles.btnTextElement}>Change Info</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnElement} onPress={this.onSignOut.bind(this)}>
-                        <Text style={styles.btnTextElement}>Sign Out</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnElement}
-                        onPress={() => {
-                            getToken()
-                            .then(a => console.log('toKENNNNNNNNNNNNNNNNNNN=', a));
-                        }}
+
+                    <TouchableOpacity
+                        style={styles.btnElement}
+                        onPress={this.onSignOut.bind(this)}
                     >
-                        <Text style={styles.btnTextElement}>Check token</Text>
+                        <Text style={styles.btnTextElement}>Sign Out</Text>
                     </TouchableOpacity>
                 </View>
                 <View />

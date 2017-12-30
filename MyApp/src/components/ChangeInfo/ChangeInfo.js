@@ -7,8 +7,18 @@ import iconBack from '../../../src/img/appIcon/back_white.png';
 const { width, height } = Dimensions.get('window');
 
 export default class ChangeInfo extends Component {
+    constructor(props) {
+        super(props);
+        const { name, address, phone } = this.props.navigation.state.params.userInfo;
+        this.state = {
+            txtName: name,
+            txtAddress: address,
+            txtPhone: phone
+        };
+    }
     render() {
         const { wrapAll, header, headerText, iconBackStyle, body } = styles;
+        const { txtName, txtAddress, txtPhone } = this.state;
         return (
             <View style={wrapAll}>
                 <View style={header}>
@@ -19,9 +29,27 @@ export default class ChangeInfo extends Component {
                     <View style={iconBackStyle} />
                 </View>
                 <View style={body}>
-                    <TextInput style={styles.textInput} placeholder="Enter your name" underlineColorAndroid='rgba(0,0,0,0)' />
-                    <TextInput style={styles.textInput} placeholder="Enter your address" underlineColorAndroid='rgba(0,0,0,0)' />
-                    <TextInput style={styles.textInput} placeholder="Enter your phone number" underlineColorAndroid='rgba(0,0,0,0)' />
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder="Enter your name"
+                        value={txtName}
+                        onChangeText={text => this.setState({ ...this.state, text })}
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                    />
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder="Enter your address"
+                        value={txtAddress}
+                        onChangeText={text => this.setState({ ...this.state, text })}
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                    />
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder="Enter your phone number"
+                        value={txtPhone}
+                        onChangeText={text => this.setState({ ...this.state, text })}
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                    />
                     <TouchableOpacity style={styles.wrapbtn}>
                         <Text style={styles.btnBigText}>CHANGE YOUR INFORMATION</Text>
                     </TouchableOpacity>

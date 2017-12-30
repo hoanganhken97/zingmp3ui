@@ -5,6 +5,7 @@ import imgAvatar from '../../img/temp/Avatar.png';
 
 import Global from '../Global';
 import saveToken from '../../api/saveToken';
+import getToken from '../../api/getToken';
 
 export default class Menu extends Component {
     constructor(props) {
@@ -15,11 +16,11 @@ export default class Menu extends Component {
 
     onSignIn(user) {
         this.setState({ user });
-        saveToken('');
     }
 
     onSignOut() {
         this.setState({ user: null });
+        saveToken('');
     }
 
     render() {
@@ -43,6 +44,14 @@ export default class Menu extends Component {
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.btnElement} onPress={this.onSignOut.bind(this)}>
                         <Text style={styles.btnTextElement}>Sign Out</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btnElement}
+                        onPress={() => {
+                            getToken()
+                            .then(a => console.log('toKENNNNNNNNNNNNNNNNNNN=', a));
+                        }}
+                    >
+                        <Text style={styles.btnTextElement}>Check token</Text>
                     </TouchableOpacity>
                 </View>
                 <View />

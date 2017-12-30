@@ -15,11 +15,6 @@ export default class SignIn extends Component {
         };
     }
 
-    componentDidMount() {
-        getToken()
-        .then(a => console.log(`TOKENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN:${a}`));
-    }
-
     onSignIn() {
         const { email, password } = this.state;
         signIn(email, password)
@@ -30,6 +25,7 @@ export default class SignIn extends Component {
         })
         .catch(error => console.log(error));
     }
+    
     render() {
         const { email, password } = this.state;
         return (

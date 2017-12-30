@@ -14,23 +14,27 @@ export default class Category extends Component {
         const { navigation } = this.props;
         navigation.navigate('Screen_ProductList');
     }
+
     render() {
         const { types } = this.props;
+        const swiper = (
+            <Swiper width={width - 40} height={(width - 40) / 2} autoplay autoplayTimeout={5}>
+                { types.map(e => (
+                    <TouchableOpacity onPress={this.openListProduct.bind(this)} key={e.id}>
+                        <ImageBackground source={{ uri: `${url}${e.image}` }} style={styles.imgStyle}>
+                            <Text style={styles.textContent}>{e.name}</Text>
+                        </ImageBackground>
+                    </TouchableOpacity>
+                )) }
+            </Swiper>
+        );
         return (
             <View style={styles.wrapCategory}>
                 <View style={{ height: 50, justifyContent: 'center' }}>
                     <Text style={styles.title}>LIST OF CATEGORY</Text>
                 </View>
                 <View style={{ flex: 4, alignItems: 'center' }}>
-                    <Swiper width={width - 40} height={(width - 40) / 2} autoplay autoplayTimeout={5}>
-                        { types.map(e => (
-                            <TouchableOpacity onPress={this.openListProduct.bind(this)} key={e.id}>
-                                <ImageBackground source={{ uri: `${url}${e.image}` }} style={styles.imgStyle}>
-                                    <Text style={styles.textContent}>{e.name}</Text>
-                                </ImageBackground>
-                            </TouchableOpacity>
-                        )) }
-                    </Swiper>
+                    { types.length ? swiper : null }
                 </View>
             </View>
         );

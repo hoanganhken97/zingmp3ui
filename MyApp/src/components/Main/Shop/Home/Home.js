@@ -6,6 +6,7 @@ import TopProduct from './TopProduct';
 
 import checkLogin from '../../../../api/checkLogin';
 import getToken from '../../../../api/getToken';
+import refreshToken from '../../../../api/refreshToken';
 import Global from '../../../Global';
 
 export default class Home extends Component {
@@ -19,6 +20,11 @@ export default class Home extends Component {
         .then(token => checkLogin(token))
         .then(res => Global.onSignIn(res.user))
         .catch(err => console.log('LOI CHECK LOGIN', err));
+
+        setInterval(() => {
+            getToken()
+            .then(token => refreshToken(token));
+        }, 60 * 1000);
     }
     render() {
         const { types, topProducts } = this.props;

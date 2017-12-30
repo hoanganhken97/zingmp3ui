@@ -5,7 +5,9 @@
     "jquery"
   ],
   "loadEagerly": [],
-  "dontLoad": [],
+  "dontLoad": [
+    "node_modules/**"
+  ],
   "plugins": {
     "doc_comment": true
   }

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet,
-        Dimensions, Image, TextInput } from 'react-native';
+        Dimensions, Image, TextInput, Alert } from 'react-native';
 
 import iconBack from '../../../src/img/appIcon/back_white.png';
+import getToken from '../../api/getToken';
+import changeInfo from '../../api/changeInfo';
+import Global from '../Global';
 
 const { width, height } = Dimensions.get('window');
 
@@ -16,6 +19,29 @@ export default class ChangeInfo extends Component {
             txtPhone: phone
         };
     }
+
+    alertSuccess() {
+        Alert.alert(
+            'Congratulation!!!',
+            'Change Information Successfully',
+            [
+                { text: 'OK', onPress: () => { this.props.navigation.goBack(); } }
+            ],
+            { cancelable: false }
+        );
+    }
+
+    changeInformation() {
+        const { txtName, txtAddress, txtPhone } = this.state;
+        getToken()
+        .then(token => changeInfo(token, txtName, txtAddress, txtPhone))
+        .then(user => {
+            this.alertSuccess();
+            Global.onSignIn(user);
+        })
+        .catch(err => console.log(err));
+    }
+    
     render() {
         const { wrapAll, header, headerText, iconBackStyle, body } = styles;
         const { txtName, txtAddress, txtPhone } = this.state;
@@ -33,24 +59,24 @@ export default class ChangeInfo extends Component {
                         style={styles.textInput}
                         placeholder="Enter your name"
                         value={txtName}
-                        onChangeText={text => this.setState({ ...this.state, text })}
+                        onChangeText={text => this.setState({ ...this.state, txtName: text })}
                         underlineColorAndroid='rgba(0,0,0,0)'
                     />
                     <TextInput
                         style={styles.textInput}
                         placeholder="Enter your address"
                         value={txtAddress}
-                        onChangeText={text => this.setState({ ...this.state, text })}
+                        onChangeText={text => this.setState({ ...this.state, txtAddress: text })}
                         underlineColorAndroid='rgba(0,0,0,0)'
                     />
                     <TextInput
                         style={styles.textInput}
                         placeholder="Enter your phone number"
                         value={txtPhone}
-                        onChangeText={text => this.setState({ ...this.state, text })}
+                        onChangeText={text => this.setState({ ...this.state, txtPhone: text })}
                         underlineColorAndroid='rgba(0,0,0,0)'
                     />
-                    <TouchableOpacity style={styles.wrapbtn}>
+                    <TouchableOpacity style={styles.wrapbtn} onPress={this.changeInformation.bind(this)}>
                         <Text style={styles.btnBigText}>CHANGE YOUR INFORMATION</Text>
                     </TouchableOpacity>
                 </View>

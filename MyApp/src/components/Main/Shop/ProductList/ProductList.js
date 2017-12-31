@@ -21,7 +21,7 @@ export default class ProductDetail extends Component {
         this.state = {
             listProducts: ds,
             refreshing: false,
-            page: 2
+            page: 1
         };
         this.storageArr = [];
     }

@@ -3,7 +3,6 @@ import { View, Text, StyleSheet,
         TouchableOpacity, Dimensions,
         ScrollView, Image } from 'react-native';
 
-import backList from '../../../../img/appIcon/backList.png';
 import imgSp1 from '../../../../img/temp/sp1.jpeg';
 
 //Hàm viết hoa các chữ cái đầu trong chuỗi.

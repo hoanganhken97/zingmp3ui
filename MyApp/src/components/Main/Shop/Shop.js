@@ -35,6 +35,7 @@ export default class Shop extends Component {
         Global.increaseQuantity = this.increaseQuantity.bind(this);
         Global.decreaseQuantity = this.decreaseQuantity.bind(this);
         Global.removeProduct = this.removeProduct.bind(this);
+        Global.gotoSearch = this.gotoSearch.bind(this);
     }
 
     componentDidMount() {
@@ -89,11 +90,18 @@ export default class Shop extends Component {
         navigation.navigate('DrawerOpen');
     }
 
+    gotoSearch() {
+        this.setState({ selectedTab: 'search' });
+    }
+
     render() {
         const { types, selectedTab, topProducts, cartArray } = this.state;
         return (
             <View style={{ flex: 1 }} >
-                <Header onOpen={this.openMenu.bind(this)} />
+                <Header
+                    onOpen={this.openMenu.bind(this)}
+                    gotoSearch={this.gotoSearch.bind(this)}
+                />
                 <TabNavigator>
                     <TabNavigator.Item
                     selected={selectedTab === 'home'}

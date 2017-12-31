@@ -3,9 +3,25 @@ import { View, Text, TouchableOpacity,
         StyleSheet, Dimensions, Image, ScrollView } from 'react-native';
 
 import iconBack from '../../../src/img/appIcon/back_white.png';
+import getOrderHistory from '../../api/getOrderHistory';
+import getToken from '../../api/getToken';
 
 const { width, height } = Dimensions.get('window');
 export default class OrderHistory extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            arrOrder: []
+        };
+    }
+
+    componentDidMount() {
+        getToken()
+        .then(token => getOrderHistory(token))
+        .then(arrOrder => this.setState({ arrOrder }))
+        .catch(err => console.log(err));
+    }
+
     render() {
     const { wrapAll, header, headerText, iconBackStyle,
             body, wrapAllElement, wrapElement, titleStyle } = styles;
@@ -20,96 +36,26 @@ export default class OrderHistory extends Component {
             </View>
             <View style={body}>
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <View style={wrapAllElement}>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Order id:</Text>
-                            <Text style={{ color: '#276BFC', fontSize: 15 }}>ORD1</Text>
+                    {this.state.arrOrder.map(e => (
+                        <View style={wrapAllElement} key={e.id}>
+                            <View style={wrapElement}>
+                                <Text style={titleStyle}>Order id:</Text>
+                                <Text style={{ color: '#276BFC', fontSize: 15 }}>ORD{e.id}</Text>
+                            </View>
+                            <View style={wrapElement}>
+                                <Text style={titleStyle}>Order time:</Text>
+                                <Text style={{ color: '#C52F79', fontSize: 15 }}>{e.date_order}</Text>
+                            </View>
+                            <View style={wrapElement}>
+                                <Text style={titleStyle}>Status:</Text>
+                                <Text style={{ color: '#276BFC', fontSize: 15 }}>{e.status ? 'Completed' : 'Pending'}</Text>
+                            </View>
+                            <View style={wrapElement}>
+                                <Text style={titleStyle}>Total:</Text>
+                                <Text style={{ color: '#C52F79', fontWeight: 'bold', fontSize: 15, fontFamily: 'monospace' }}>{e.total}$</Text>
+                            </View>
                         </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Order time:</Text>
-                            <Text style={{ color: '#C52F79', fontSize: 15 }}>25-12-2017 01:33 AM</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Status:</Text>
-                            <Text style={{ color: '#276BFC', fontSize: 15 }}>Pending</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Total:</Text>
-                            <Text style={{ color: '#C52F79', fontWeight: 'bold', fontSize: 15, fontFamily: 'monospace' }}>400$</Text>
-                        </View>
-                    </View>
-                    <View style={wrapAllElement}>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Order id:</Text>
-                            <Text style={{ color: '#276BFC', fontSize: 15 }}>ORD1</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Order time:</Text>
-                            <Text style={{ color: '#C52F79', fontSize: 15 }}>25-12-2017 01:33 AM</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Status:</Text>
-                            <Text style={{ color: '#276BFC', fontSize: 15 }}>Pending</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Total:</Text>
-                            <Text style={{ color: '#C52F79', fontWeight: 'bold', fontSize: 15, fontFamily: 'monospace' }}>400$</Text>
-                        </View>
-                    </View>
-                    <View style={wrapAllElement}>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Order id:</Text>
-                            <Text style={{ color: '#276BFC', fontSize: 15 }}>ORD1</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Order time:</Text>
-                            <Text style={{ color: '#C52F79', fontSize: 15 }}>25-12-2017 01:33 AM</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Status:</Text>
-                            <Text style={{ color: '#276BFC', fontSize: 15 }}>Pending</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Total:</Text>
-                            <Text style={{ color: '#C52F79', fontWeight: 'bold', fontSize: 15, fontFamily: 'monospace' }}>400$</Text>
-                        </View>
-                    </View>
-                    <View style={wrapAllElement}>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Order id:</Text>
-                            <Text style={{ color: '#276BFC', fontSize: 15 }}>ORD1</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Order time:</Text>
-                            <Text style={{ color: '#C52F79', fontSize: 15 }}>25-12-2017 01:33 AM</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Status:</Text>
-                            <Text style={{ color: '#276BFC', fontSize: 15 }}>Pending</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Total:</Text>
-                            <Text style={{ color: '#C52F79', fontWeight: 'bold', fontSize: 15, fontFamily: 'monospace' }}>400$</Text>
-                        </View>
-                    </View>
-                    <View style={wrapAllElement}>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Order id:</Text>
-                            <Text style={{ color: '#276BFC', fontSize: 15 }}>ORD1</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Order time:</Text>
-                            <Text style={{ color: '#C52F79', fontSize: 15 }}>25-12-2017 01:33 AM</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Status:</Text>
-                            <Text style={{ color: '#276BFC', fontSize: 15 }}>Pending</Text>
-                        </View>
-                        <View style={wrapElement}>
-                            <Text style={titleStyle}>Total:</Text>
-                            <Text style={{ color: '#C52F79', fontWeight: 'bold', fontSize: 15, fontFamily: 'monospace' }}>400$</Text>
-                        </View>
-                    </View>
+                    ))}
                 </ScrollView>
             </View>
         </View>

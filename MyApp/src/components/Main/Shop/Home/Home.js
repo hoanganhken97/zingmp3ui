@@ -16,7 +16,7 @@ export default class Home extends Component {
         .then(res => Global.onSignIn(res.user))
         .catch(err => console.log('LOI CHECK LOGIN', err));
 
-        setInterval(refreshToken, 5000);
+        setInterval(refreshToken, 60000);
     }
     render() {
         const { types, topProducts } = this.props;

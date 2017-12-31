@@ -45,7 +45,7 @@ export default class ProductDetail extends Component {
                 wrapperAll, iconBack, titleStyle,
                 productContainer, productImg, productInfo,
                 lastRowInfo, textName, textPrice, textMaterial,
-                textColor, textShowDetail, productColor } = styles;
+                textColor, textShowDetail } = styles;
         const { category } = this.props.navigation.state.params;
         return (
             <View style={wrapProductList}>

@@ -97,7 +97,7 @@ export default class Shop extends Component {
     render() {
         const { types, selectedTab, topProducts, cartArray } = this.state;
         return (
-            <View style={{ flex: 1 }} >
+            <View style={{ flex: 1, backgroundColor: '#d8dde0' }} >
                 <Header
                     onOpen={this.openMenu.bind(this)}
                     gotoSearch={this.gotoSearch.bind(this)}

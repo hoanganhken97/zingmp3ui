@@ -1,84 +1,66 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet,
         TouchableOpacity, Dimensions,
-        ScrollView, Image } from 'react-native';
+        ListView, Image } from 'react-native';
 
-import imgSp1 from '../../../../img/temp/sp1.jpeg';
+import Global from '../../../Global';
 
 //Hàm viết hoa các chữ cái đầu trong chuỗi.
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
-const { width, height } = Dimensions.get('window');
+
+const url = 'http://10.0.136.37:8080/api/images/product/';
+const { width } = Dimensions.get('window');
 
 export default class Search extends Component {
+    constructor(props) {
+        super(props);
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        this.state = {
+            listProduct: ds
+        };
+        Global.setArraySearch = this.setSearchArray.bind(this);
+    }
+
+    setSearchArray(arrProduct) {
+        this.setState({ listProduct: this.state.listProduct.cloneWithRows(arrProduct) });
+    }
+
     render() {
         const { wrapProductList, wrapperElement, productImg, productInfo,
                 lastRowInfo, textName, textPrice, textMaterial,
-                textColor, textShowDetail, productColor } = styles;
+                textColor, textShowDetail } = styles;
         return (
-            <ScrollView style={wrapProductList} showsVerticalScrollIndicator={false}>
-                <View style={wrapperElement}>
-                    <Image style={productImg} source={imgSp1} />
-                    <View style={productInfo}>
-                        <Text style={textName}>{toTitleCase('lace sleeve si')}</Text>
-                        <Text style={textPrice}>100$</Text>
-                        <Text style={textMaterial}>Material Silk</Text>
-                        <View style={lastRowInfo}>
-                            <Text style={textColor}>Color RoyalBlue</Text>
-                            <View style={productColor} />
-                            <TouchableOpacity>
-                                <Text style={textShowDetail}>SHOW DETAILS</Text>
-                            </TouchableOpacity>
+            <View style={wrapProductList}>
+                <ListView
+                    dataSource={this.state.listProduct}
+                    renderRow={sProduct => (
+                        <View style={wrapperElement}>
+                            <Image style={productImg} source={{ uri: `${url}${sProduct.images[0]}` }} />
+                            <View style={productInfo}>
+                                <Text style={textName}>{toTitleCase(sProduct.name)}</Text>
+                                <Text style={textPrice}>{sProduct.price}$</Text>
+                                <Text style={textMaterial}>Material {sProduct.material}</Text>
+                                <View style={lastRowInfo}>
+                                    <Text style={textColor}>Color {sProduct.color}</Text>
+                                    <View
+                                        style={{
+                                            backgroundColor: sProduct.color.toLowerCase(),
+                                            width: 20,
+                                            height: 20,
+                                            borderRadius: 10
+                                        }}
+                                    />
+                                    <TouchableOpacity>
+                                        <Text style={textShowDetail}>SHOW DETAILS</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
                         </View>
-                    </View>
-                </View>
-                <View style={wrapperElement}>
-                    <Image style={productImg} source={imgSp1} />
-                    <View style={productInfo}>
-                        <Text style={textName}>{toTitleCase('lace sleeve si')}</Text>
-                        <Text style={textPrice}>100$</Text>
-                        <Text style={textMaterial}>Material Silk</Text>
-                        <View style={lastRowInfo}>
-                            <Text style={textColor}>Color RoyalBlue</Text>
-                            <View style={productColor} />
-                            <TouchableOpacity>
-                                <Text style={textShowDetail}>SHOW DETAILS</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-                <View style={wrapperElement}>
-                    <Image style={productImg} source={imgSp1} />
-                    <View style={productInfo}>
-                        <Text style={textName}>{toTitleCase('lace sleeve si')}</Text>
-                        <Text style={textPrice}>100$</Text>
-                        <Text style={textMaterial}>Material Silk</Text>
-                        <View style={lastRowInfo}>
-                            <Text style={textColor}>Color RoyalBlue</Text>
-                            <View style={productColor} />
-                            <TouchableOpacity>
-                                <Text style={textShowDetail}>SHOW DETAILS</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-                <View style={wrapperElement}>
-                    <Image style={productImg} source={imgSp1} />
-                    <View style={productInfo}>
-                        <Text style={textName}>{toTitleCase('lace sleeve si')}</Text>
-                        <Text style={textPrice}>100$</Text>
-                        <Text style={textMaterial}>Material Silk</Text>
-                        <View style={lastRowInfo}>
-                            <Text style={textColor}>Color RoyalBlue</Text>
-                            <View style={productColor} />
-                            <TouchableOpacity>
-                                <Text style={textShowDetail}>SHOW DETAILS</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-            </ScrollView>
+                    )}
+                />
+            </View>
         );
     }
 }
@@ -135,11 +117,5 @@ const styles = StyleSheet.create({
         fontFamily: 'sans-serif-medium',
         color: '#C52F79',
         fontSize: 12
-    },
-    productColor: {
-        backgroundColor: '#4267B2',
-        width: 20,
-        height: 20,
-        borderRadius: 10
     }
 });

@@ -5,6 +5,7 @@ import { View, Text, Dimensions, TouchableOpacity,
 import icLogo from '../../../img/appIcon/ic_logo.png';
 import icMenu from '../../../img/appIcon/ic_menu.png';
 import searchProduct from '../../../../src/api/searchProduct';
+import Global from '../../Global';
 
 const { width } = Dimensions.get('window');
 
@@ -17,9 +18,10 @@ export default class Header extends Component {
     }
 
     onSearch() {
-        const {stringSearch} = this.state;
+        const { stringSearch } = this.state;
+        this.setState({ stringSearch: '' });
         searchProduct(stringSearch)
-        .then(arrProduct => console.log(arrProduct))
+        .then(arrProduct => Global.setArraySearch(arrProduct))
         .catch(err => console.log(err));
     }
 
@@ -38,6 +40,7 @@ export default class Header extends Component {
                     style={styles.textInput}
                     placeholder='What do you want to buy?'
                     underlineColorAndroid='rgba(0,0,0,0)'
+                    value={this.state.stringSearch}
                     onChangeText={text => this.setState({ stringSearch: text })}
                     onFocus={gotoSearch}
                     onSubmitEditing={this.onSearch.bind(this)}

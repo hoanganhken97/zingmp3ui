@@ -35,7 +35,6 @@ export default class Shop extends Component {
         Global.increaseQuantity = this.increaseQuantity.bind(this);
         Global.decreaseQuantity = this.decreaseQuantity.bind(this);
         Global.removeProduct = this.removeProduct.bind(this);
-        Global.gotoSearch = this.gotoSearch.bind(this);
     }
 
     componentDidMount() {
@@ -49,6 +48,8 @@ export default class Shop extends Component {
     }
 
     addProductToCart(product) {
+        const isExist = this.state.cartArray.some(e => e.product.id === product.id)
+        if (isExist) return;
         this.setState(
             { cartArray: this.state.cartArray.concat({ product, quantity: 1 }) },
             () => saveCart(this.state.cartArray)

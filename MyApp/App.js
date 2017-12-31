@@ -8,9 +8,9 @@ import React, { Component } from 'react';
 import { SideMenu } from './src/components/Router';
 
 export default class App extends Component {
-  render() {
-    return (
-      <SideMenu />
-    );
-  }
+    render() {
+        return (
+            <SideMenu />
+        );
+    }
 }

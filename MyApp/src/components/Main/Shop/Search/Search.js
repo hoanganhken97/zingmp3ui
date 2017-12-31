@@ -27,6 +27,11 @@ export default class Search extends Component {
         this.setState({ listProduct: this.state.listProduct.cloneWithRows(arrProduct) });
     }
 
+    openProductDetail(product) {
+        const { navigation } = this.props;
+        navigation.navigate('Screen_ProductDetail', { productDetail: product });
+    }
+
     render() {
         const { wrapProductList, wrapperElement, productImg, productInfo,
                 lastRowInfo, textName, textPrice, textMaterial,
@@ -52,7 +57,7 @@ export default class Search extends Component {
                                             borderRadius: 10
                                         }}
                                     />
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.openProductDetail(sProduct)}>
                                         <Text style={textShowDetail}>SHOW DETAILS</Text>
                                     </TouchableOpacity>
                                 </View>

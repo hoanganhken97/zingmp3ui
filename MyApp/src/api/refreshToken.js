@@ -1,6 +1,7 @@
 import saveToken from './saveToken';
+import getToken from './getToken';
 
-const refreshToken = (token) => {
+const getNewToken = (token) => (
     fetch('http://10.0.136.37:8080/api/refresh_token.php', //eslint-disable-line
     {
         method: 'POST',
@@ -11,7 +12,20 @@ const refreshToken = (token) => {
         body: JSON.stringify({ token })
     })
     .then(res => res.text())
-    .then(sToken => saveToken(sToken));
+);
+
+const refreshToken = async () => {
+    try {
+        const token = await getToken();
+        if (token === '' || token === 'TOKEN_KHONG_HOP_LE') {
+            console.log('Chua co Token');
+        }
+        const newToken = await getNewToken(token);
+        await saveToken(newToken);
+        console.log(`NEW TOKENNNNNNNNNNN: ${newToken}`);
+    } catch (e) {
+        console.log(e);
+    }
 };
 
 export default refreshToken;

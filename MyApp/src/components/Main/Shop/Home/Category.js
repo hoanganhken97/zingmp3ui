@@ -6,13 +6,14 @@ import Swiper from 'react-native-swiper';
 // import imgMaxi from '../../../../img/temp/maxi.jpg';
 // import imgParty from '../../../../img/temp/party.jpg';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
-const url = 'http://eotw2012.000webhostapp.com/api/images/type/';
+const url = 'http://10.0.136.37:8080/api/images/type/';
+
 export default class Category extends Component {
-    openListProduct() {
+    openListProduct(category) {
         const { navigation } = this.props;
-        navigation.navigate('Screen_ProductList');
+        navigation.navigate('Screen_ProductList', { category });
     }
 
     render() {
@@ -20,8 +21,10 @@ export default class Category extends Component {
         const swiper = (
             <Swiper width={width - 40} height={(width - 40) / 2} autoplay autoplayTimeout={5}>
                 { types.map(e => (
-                    <TouchableOpacity onPress={this.openListProduct.bind(this)} key={e.id}>
-                        <ImageBackground source={{ uri: `${url}${e.image}` }} style={styles.imgStyle}>
+                    <TouchableOpacity onPress={() => this.openListProduct(e)} key={e.id}>
+                        <ImageBackground
+                            source={{ uri: `${url}${e.image}` }}
+                            style={styles.imgStyle}>
                             <Text style={styles.textContent}>{e.name}</Text>
                         </ImageBackground>
                     </TouchableOpacity>

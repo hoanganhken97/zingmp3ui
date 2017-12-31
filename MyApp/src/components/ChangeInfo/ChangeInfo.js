@@ -7,7 +7,7 @@ import getToken from '../../api/getToken';
 import changeInfo from '../../api/changeInfo';
 import Global from '../Global';
 
-const { width, height } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 export default class ChangeInfo extends Component {
     constructor(props) {
@@ -41,7 +41,7 @@ export default class ChangeInfo extends Component {
         })
         .catch(err => console.log(err));
     }
-    
+
     render() {
         const { wrapAll, header, headerText, iconBackStyle, body } = styles;
         const { txtName, txtAddress, txtPhone } = this.state;
@@ -76,7 +76,10 @@ export default class ChangeInfo extends Component {
                         onChangeText={text => this.setState({ ...this.state, txtPhone: text })}
                         underlineColorAndroid='rgba(0,0,0,0)'
                     />
-                    <TouchableOpacity style={styles.wrapbtn} onPress={this.changeInformation.bind(this)}>
+                    <TouchableOpacity
+                        style={styles.wrapbtn}
+                        onPress={this.changeInformation.bind(this)}
+                    >
                         <Text style={styles.btnBigText}>CHANGE YOUR INFORMATION</Text>
                     </TouchableOpacity>
                 </View>

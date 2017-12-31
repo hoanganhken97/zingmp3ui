@@ -10,11 +10,6 @@ import refreshToken from '../../../../api/refreshToken';
 import Global from '../../../Global';
 
 export default class Home extends Component {
-    // componentWillReceiveProps(nextProps) {
-    //     console.log('----------------------');
-    //     console.log(nextProps.topProducts);
-    //     console.log('----------------------');
-    // }
     componentDidMount() {
         getToken()
         .then(token => checkLogin(token))

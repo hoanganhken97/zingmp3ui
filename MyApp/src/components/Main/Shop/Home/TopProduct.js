@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, ListView } from 'react-native';
+import { View, Text, StyleSheet, Image,
+        Dimensions, TouchableOpacity, ListView } from 'react-native';
 
-import imgSp1 from '../../../../img/temp/sp1.jpeg';
-import imgSp2 from '../../../../img/temp/sp2.jpeg';
-import imgSp3 from '../../../../img/temp/sp3.jpeg';
-import imgSp4 from '../../../../img/temp/sp4.jpeg';
-import imgSp5 from '../../../../img/temp/sp5.jpeg';
-
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const url = 'http://10.0.136.37:8080/api/images/product/';
 

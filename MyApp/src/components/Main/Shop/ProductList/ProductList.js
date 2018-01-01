@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     wrapHeader: {
-        height: height / 15,
+        height: height / 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'

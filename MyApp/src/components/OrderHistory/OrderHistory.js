@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
     },
     body: {
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
+        flex: 1
     },
     wrapAllElement: {
         backgroundColor: '#FFF',

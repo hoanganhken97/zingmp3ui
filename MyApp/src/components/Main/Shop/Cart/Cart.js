@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity, StyleSheet,
         Dimensions, Image, ListView } from 'react-native';
 
 import Global from '../../../Global';
+import sendOrder from '../../../../api/sendOrder';
+import getToken from '../../../../api/getToken';
 
 const url = 'http://10.0.136.37:8080/api/images/product/';
 
@@ -10,22 +12,44 @@ const url = 'http://10.0.136.37:8080/api/images/product/';
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 export default class Cart extends Component {
+    async onSendOrder() {
+        try {
+            const token = await getToken();
+            const arrayDetail = this.props.cartArray.map(e => ({
+                id: e.product.id,
+                quantity: e.quantity
+            }));
+            const result = await sendOrder(token, arrayDetail);
+            if (result === 'THEM_THANH_CONG') {
+                console.log('Them thanh cong');
+            } else {
+                console.log('Them that bai', result);
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     incQuantity(id) {
         Global.increaseQuantity(id);
     }
+
     decQuantity(id) {
         Global.decreaseQuantity(id);
     }
+
     deleteProduct(id) {
         Global.removeProduct(id);
     }
-    openProductDetail() {
+
+    openProductDetail(product) {
         const { navigation } = this.props;
-        navigation.navigate('Screen_ProductDetail');
+        navigation.navigate('Screen_ProductDetail', { productDetail: product });
     }
+
     render() {
         const { container, wrapElement, imgStyle,
                 wrapContent, titleStyle, priceStyle,
@@ -60,7 +84,7 @@ export default class Cart extends Component {
                                             <Text style={{ color: 'black' }}>+</Text>
                                         </TouchableOpacity>
                                     </View>
-                                    <TouchableOpacity style={showDetailContainer}>
+                                    <TouchableOpacity style={showDetailContainer} onPress={() => this.openProductDetail(cartItem.product)}>
                                         <Text style={textDetail}>SHOW DETAILS</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -68,7 +92,7 @@ export default class Cart extends Component {
                         </View>
                     )}
                 />
-                <TouchableOpacity style={checkoutButton}>
+                <TouchableOpacity style={checkoutButton} onPress={this.onSendOrder.bind(this)}>
                     <Text style={checkoutTitle}>TOTAL {Sum}$ CHECKOUT NOW</Text>
                 </TouchableOpacity>
             </View>

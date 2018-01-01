@@ -22,7 +22,6 @@ const refreshToken = async () => {
         }
         const newToken = await getNewToken(token);
         await saveToken(newToken);
-        console.log(`NEW TOKENNNNNNNNNNN: ${newToken}`);
     } catch (e) {
         console.log(e);
     }

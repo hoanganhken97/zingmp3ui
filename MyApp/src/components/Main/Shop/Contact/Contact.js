@@ -19,16 +19,18 @@ export default class Contact extends Component {
                     <MapView
                         style={{ width: width - 20, height: 230 }}
                         initialRegion={{
-                            latitude: 37.4220,
-                            longitude: -122.0840,
-                            latitudeDelta: 0.0922,
-                            longitudeDelta: 0.0421,
+                            latitude: 10.883996,
+                            longitude: 106.782993,
+                            latitudeDelta: 0.001,
+                            longitudeDelta: 0.0005,
+                            // latitudeDelta: 0.0922,
+                            // longitudeDelta: 0.0421,
                         }}
                     >
                         <MapView.Marker
-                          coordinate={{ latitude: 37.4220, longitude: -122.0840 }}
+                          coordinate={{ latitude: 10.883996, longitude: 106.782993 }}
                           title="Disney Shop"
-                          description="Shop Women's Dresses Online"
+                          description="Tòa B5 - Phòng 519"
                         />
                     </MapView>
                 </View>

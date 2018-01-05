@@ -88,7 +88,7 @@ export default class ProductDetail extends Component {
                             <RefreshControl
                                 refreshing={this.state.refreshing}
                                 onRefresh={() => {
-                                    this.setState({ refreshing: true });
+                                    this.setState({ refreshing: true, page: this.state.page + 1 });
                                     const newPage = this.state.page + 1;
                                     const idType = category.id;
                                     getListProduct(idType, newPage)

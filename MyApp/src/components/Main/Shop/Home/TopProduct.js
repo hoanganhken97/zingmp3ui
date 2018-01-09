@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image,
 
 const { width } = Dimensions.get('window');
 
-const url = 'http://10.0.136.37:8080/api/images/product/';
+const url = 'http://eotw2012.000webhostapp.com/api/images/product/';
 
 export default class TopProduct extends Component {
     openProductDetail(product) {

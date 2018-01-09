@@ -1,5 +1,5 @@
 const register = (email, name, password) => (
-    fetch('http://10.0.136.37:8080/api/register.php',
+    fetch('http://eotw2012.000webhostapp.com/api/register.php',
     {
         method: 'POST',
         headers: {

@@ -6,7 +6,7 @@ import { View, Text, StyleSheet,
 import backList from '../../../../img/appIcon/backList.png';
 import getListProduct from '../../../../api/getListProduct';
 
-const url = 'http://10.0.136.37:8080/api/images/product/';
+const url = 'http://eotw2012.000webhostapp.com/api/images/product/';
 
 //Hàm viết hoa các chữ cái đầu trong chuỗi.
 function toTitleCase(str) {

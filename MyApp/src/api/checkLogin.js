@@ -1,5 +1,5 @@
 const checkLogin = (token) => (
-    fetch('http://10.0.136.37:8080/api/check_login.php', //eslint-disable-line
+    fetch('http://eotw2012.000webhostapp.com/api/check_login.php', //eslint-disable-line
     {
         method: 'POST',
         headers: {

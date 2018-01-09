@@ -1,5 +1,5 @@
 const sendOrder = (token, arrayDetail) => (
-    fetch('http://10.0.136.37:8080/api/cart.php', //eslint-disable-line
+    fetch('http://eotw2012.000webhostapp.com/api/cart.php', //eslint-disable-line
     {
         method: 'POST',
         headers: {

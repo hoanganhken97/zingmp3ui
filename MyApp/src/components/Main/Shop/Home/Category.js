@@ -8,7 +8,7 @@ import Swiper from 'react-native-swiper';
 
 const { width } = Dimensions.get('window');
 
-const url = 'http://10.0.136.37:8080/api/images/type/';
+const url = 'http://eotw2012.000webhostapp.com/api/images/type/';
 
 export default class Category extends Component {
     openListProduct(category) {

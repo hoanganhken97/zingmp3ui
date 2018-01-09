@@ -10,7 +10,7 @@ function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
 
-const url = 'http://10.0.136.37:8080/api/images/product/';
+const url = 'http://eotw2012.000webhostapp.com/api/images/product/';
 const { width } = Dimensions.get('window');
 
 export default class Search extends Component {

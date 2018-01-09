@@ -2,7 +2,7 @@ import saveToken from './saveToken';
 import getToken from './getToken';
 
 const getNewToken = (token) => (
-    fetch('http://10.0.136.37:8080/api/refresh_token.php', //eslint-disable-line
+    fetch('http://eotw2012.000webhostapp.com/api/refresh_token.php', //eslint-disable-line
     {
         method: 'POST',
         headers: {

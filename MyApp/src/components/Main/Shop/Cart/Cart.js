@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet,
-        Dimensions, Image, ListView } from 'react-native';
+        Dimensions, Image, ListView, Alert } from 'react-native';
 
 import Global from '../../../Global';
 import sendOrder from '../../../../api/sendOrder';
@@ -24,13 +24,24 @@ export default class Cart extends Component {
             }));
             const result = await sendOrder(token, arrayDetail);
             if (result === 'THEM_THANH_CONG') {
-                console.log('Them thanh cong');
+                return this.onSuccess();
             } else {
                 console.log('Them that bai', result);
             }
         } catch (e) {
             console.log(e);
         }
+    }
+
+    onSuccess() {
+        Alert.alert(
+            'Congratulation!!!',
+            'Sent Order Successfully',
+            [
+                { text: 'OK', onPress: this.props.resetArray() }
+            ],
+            { cancelable: false }
+        );
     }
 
     incQuantity(id) {

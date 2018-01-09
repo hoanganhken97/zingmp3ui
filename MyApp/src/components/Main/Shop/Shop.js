@@ -47,6 +47,13 @@ export default class Shop extends Component {
         .then(cartArray => this.setState({ cartArray }));
     }
 
+    resetArray() {
+        this.setState(
+            { cartArray: [] },
+            () => saveCart(this.state.cartArray)
+        );
+    }
+
     addProductToCart(product) {
         const isExist = this.state.cartArray.some(e => e.product.id === product.id);
         if (isExist) return;
@@ -70,7 +77,12 @@ export default class Shop extends Component {
     decreaseQuantity(productID) {
         const newCart = this.state.cartArray.map(e => {
             if (e.product.id !== productID) return e;
-            return { product: e.product, quantity: e.quantity - 1 };
+            else {
+                if(e.quantity > 1)
+                    return { product: e.product, quantity: e.quantity - 1 };
+                else 
+                    return { product: e.product, quantity: 1 };
+            }
         });
         this.setState(
             { cartArray: newCart },
@@ -124,7 +136,7 @@ export default class Shop extends Component {
                     selectedTitleStyle={{ fontFamily: 'sans-serif-medium' }}
                     badgeText={cartArray.length}
                     >
-                        <Cart navigation={this.props.navigation} cartArray={cartArray} />
+                        <Cart navigation={this.props.navigation} cartArray={cartArray} resetArray={this.resetArray.bind(this)}/>
                     </TabNavigator.Item>
 
                     <TabNavigator.Item

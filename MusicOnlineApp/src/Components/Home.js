@@ -1,32 +1,60 @@
-import React, {Component} from 'react';
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, ListView, View } from 'react-native';
 
-import Swiper_Top from './Screens/Swiper_Top';
-import Topic_Hot from './Screens/Topic_Hot';
+import Header from './Header';
+import SwiperTop from './Screens/Swiper_Top';
+import TopicHot from './Screens/Topic_Hot';
 import Chart from './Screens/Chart';
-import Chart_Week from './Screens/Chart_Week';
-import MV_Hot from './Screens/MV_Hot';
-import Top_Kind from './Screens/Top_Kind';
+import ChartWeek from './Screens/Chart_Week';
+import MVHot from './Screens/MV_Hot';
+import TopKind from './Screens/Top_Kind';
+import AlbumHot from './Screens/Album_Hot';
+import Suggestion from './Screens/Suggestion';
 
-export default class Home_Page extends Component {
-  render(){
-    return(
-      <ScrollView style = {styles.homeView} showsVerticalScrollIndicator={false}>
-        <Swiper_Top />
-        <Topic_Hot />
-        <Chart />
-        <Chart_Week />
-        <MV_Hot />
-        <Top_Kind />
-      </ScrollView>
-    );
+export default class HomePage extends Component {
+    constructor(props) {
+        super(props);
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        this.state = {
+          dataSource: ds.cloneWithRows([0]),
+        };
+    }
 
-  }
+    openMenu() {
+        const { navigation } = this.props;
+        navigation.navigate('DrawerOpen');
+    }
+
+    render() {
+        return (
+            <View style={styles.homeView}>
+                <Header openMenu={this.openMenu.bind(this)} navigation={this.props.navigation} />
+                <ListView
+                    enableEmptySections
+                    removeClippedSubviews={false}
+                    dataSource={this.state.dataSource}
+                    renderRow={() =>
+                        <View>
+                            <SwiperTop navigation={this.props.navigation} />
+                            <TopicHot navigation={this.props.navigation} />
+                            <Chart navigation={this.props.navigation} />
+                            <ChartWeek navigation={this.props.navigation} />
+                            <MVHot navigation={this.props.navigation} />
+                            <TopKind navigation={this.props.navigation} />
+                            <AlbumHot navigation={this.props.navigation} />
+                            <Suggestion navigation={this.props.navigation} />
+                        </View>
+                    }
+                />
+            </View>
+
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  homeView:{
-    flex: 1,
-    backgroundColor:'#fdfdfd'
-  },
+    homeView: {
+        backgroundColor: '#FEFEFE',
+        flex: 1
+    },
 });

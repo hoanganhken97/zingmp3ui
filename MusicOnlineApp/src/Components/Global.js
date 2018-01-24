@@ -1,0 +1,3 @@
+module.exports = {
+    isSelect: null,
+};
